@@ -27,7 +27,7 @@ from mpl_toolkits.basemap import Basemap, shiftgrid
 from calc import haversine as sphered
 from io_utils.EcoFOCI_netCDF_read import EcoFOCI_netCDF
 from calc.EPIC2Datetime import EPIC2Datetime, to_UDUNITS, Datetime2EPIC
-from utilities import ncutilities as ncutils
+from utilities import ncutilities as ncutil
 
 __author__   = 'Shaun Bell'
 __email__    = 'shaun.bell@noaa.gov'
@@ -50,6 +50,7 @@ def write2epic( file_name, stationid, time, lat_lon, data ):
         ncinstance.add_coord_data(time1=time[0], time2=time[1], latitude=lat_lon[0], longitude=-1 * lat_lon[1], \
             depth_level=0. )
         ncinstance.add_data('T_25', data[0])
+        ncinstance.add_data('ICEC_2025', data[1])
         ncinstance.close()
 
 def write2epic_cf( file_name, stationid, time, lat_lon, data ):
@@ -62,6 +63,7 @@ def write2epic_cf( file_name, stationid, time, lat_lon, data ):
         ncinstance.add_coord_data(time=time, latitude=lat_lon[0], longitude=-1 * lat_lon[1], \
             depth_level=0. )
         ncinstance.add_data('T_25', data[0])
+        ncinstance.add_data('ICEC_2025', data[1])
         ncinstance.close()
         
 """------------------------- Topo   Modules -------------------------------------------"""
@@ -133,7 +135,7 @@ print "stn1 nearest point to {sta_lat}, {sta_lon} which is lat:{sta_modellat} , 
     sta_modellat=stn1_modelpt[0], sta_modellon=stn1_modelpt[1])
 
 stn1_modelpt[1] = -1.*((180 - stn1_modelpt[1]) + 180)
-print "thus converting lon to degrees W positive {sta_modellon}".format(sta_modellon=stn1_modelpt[1])
+print "thus converting lon to degrees W negative {sta_modellon}".format(sta_modellon=stn1_modelpt[1])
 
 #loop over all requested data   
 years = range(args.years[0],args.years[1]+1)
@@ -157,31 +159,38 @@ for yy in years:
     stn1_sst = stn1_data['sst']
     df.close()
 
+    ### IceConc files
+    infile = NCEP + 'icec.day.mean.'+ str(yy) + '.v2.nc'
+    print "Working on file " + infile
+    df = EcoFOCI_netCDF(infile)
+    vars_dic = df.get_vars()
+    nchandle = df._getnchandle_()
+    print "Parameters availabile: {params}".format(params=vars_dic.keys())
+    stn1_data = {}
+    for j, v in enumerate(vars_dic): 
+        try: #check for nc variable
+                stn1_data[v] = nchandle.variables[v][:,stn1_pt[3], stn1_pt[4]]
+        except ValueError: #if parameter is not of expected dimensions
+            stn1_data[v] = nchandle.variables[v][:]
+    stn1_icec = stn1_data['icec']
+    df.close()
 
     #convert to EPIC time
     pydate = to_UDUNITS(stn1_data['time'], 
             time_since_str='days since 1800-01-01 00:00:00')
-    epic_time, epic_time1 = Datetime2EPIC(pydat.tolist())
+    epic_time, epic_time1 = Datetime2EPIC(pydate.tolist())
 
     
     if args.store_epic:
         # write to NetCDF
         outfile = 'data/NOAA_OI_SST_V2_' + args.MooringID + '_' + str(yy) + '.nc'
         print "Writing to Epic NetCDF " + outfile
-        write2epic( outfile, station_name[0], [epic_time, epic_time1], stn1_modelpt, [stn1_sst,])
-        if args.cf:    
-            #days since 1800-1-1 00:00:0.0
-            date_str_cf = []
-            write2epic_cf( outfile, station_name[0], date_str_cf, stn1_modelpt, [stn1_sst,])
+        write2epic( outfile, station_name[0], [epic_time, epic_time1], stn1_modelpt, [stn1_sst,stn1_icec])
     if args.store_cf:
         # write to NetCDF
         outfile = 'data/NOAA_OI_SST_V2_' + args.MooringID + '_' + str(yy) + '_cf.nc'
         print "Writing to Epic NetCDF " + outfile
-        write2epic_cf( outfile, station_name[0], date_str_cf, stn1_modelpt, [stn1_sst,])
-        if args.cf:    
-            #days since 1800-1-1 00:00:0.0
-            date_str_cf = []
-            write2epic_cf( outfile, station_name[0], date_str_cf, stn1_modelpt, [stn1_sst,])
+        write2epic_cf( outfile, station_name[0], stn1_data['time'], stn1_modelpt, [stn1_sst,stn1_icec])
 
 
 if args.plot:
@@ -189,8 +198,8 @@ if args.plot:
     
     fig = plt.figure()
     ax = plt.subplot(111)
-    m = Basemap(resolution='i',projection='merc', llcrnrlat=52, \
-        urcrnrlat=58,llcrnrlon=-140,urcrnrlon=-130, lat_ts=45)
+    m = Basemap(resolution='i',projection='merc', llcrnrlat=55, 
+        urcrnrlat=65,llcrnrlon=-180,urcrnrlon=-155, lat_ts=60)
 
     # Mooring Data
     x_moor, y_moor = m(-1. * sta_long[0],sta_lat[0])
@@ -208,14 +217,14 @@ if args.plot:
 
     m.drawcountries(linewidth=0.5)
     m.drawcoastlines(linewidth=0.5)
-    m.drawparallels(np.arange(50,62,2.),labels=[1,0,0,0],color='black',dashes=[1,1],labelstyle='+/-',linewidth=0.2) # draw parallels
-    m.drawmeridians(np.arange(-140,-130,2.),labels=[0,0,0,1],color='black',dashes=[1,1],labelstyle='+/-',linewidth=0.2) # draw meridians
+    m.drawparallels(np.arange(55,75,5.),labels=[1,0,0,0],color='black',dashes=[1,1],labelstyle='+/-',linewidth=0.2) # draw parallels
+    m.drawmeridians(np.arange(-180,-145,5.),labels=[0,0,0,1],color='black',dashes=[1,1],labelstyle='+/-',linewidth=0.2) # draw meridians
     #m.fillcontinents(color='black')
 
     DefaultSize = fig.get_size_inches()
     fig.set_size_inches( (DefaultSize[0], DefaultSize[1]) )
 
-    plt.savefig('images/'+args.MoorindID+'.png', bbox_inches='tight', dpi = (100))
+    plt.savefig('images/'+args.MooringID+'.png', bbox_inches='tight', dpi = (100))
     plt.close()
 
 

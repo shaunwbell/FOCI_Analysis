@@ -589,8 +589,8 @@ class EPIC_NC_SST(object):
         """
 
         #build record variable attributes
-        rec_vars, rec_var_name, rec_var_longname = ['T_25'], ['T'], ["	SST (C)"]
-        rec_var_generic_name, rec_var_FORTRAN, rec_var_units, rec_var_epic = ['temp'], [''], ['C'], [25]
+        rec_vars, rec_var_name, rec_var_longname = ['T_25','ICEC_2025'], ['T','ICEC'], ["	SST (C)", "ICE CONC (%)"]
+        rec_var_generic_name, rec_var_FORTRAN, rec_var_units, rec_var_epic = ['temp','icec'], ['',''], ['C','%'], [25,2025]
          
 
 
@@ -769,30 +769,30 @@ class EPIC_NC_SST_cf(object):
         """
 
         #build record variable attributes
-        rec_vars, rec_var_name, rec_var_longname = ['T_25'], ['T'], ["	SST (C)"]
-        rec_var_generic_name, rec_var_FORTRAN, rec_var_units, rec_var_epic = ['temp'], [''], ['C'], [25]
-         
+        rec_vars, rec_var_name, rec_var_longname = ['T_25','ICEC_2025'], ['T','ICEC'], ["   SST (C)", "ICE CONC (%)"]
+        rec_var_generic_name, rec_var_FORTRAN, rec_var_units, rec_var_epic = ['temp','icec'], ['',''], ['C','%'], [25,2025]
+                
 
 
-        rec_vars = ['time','depth','latitude','longitude'] + rec_vars
+        rec_vars = ['time','depth','lat','lon'] + rec_vars
 
         rec_var_name = ['', '', '', ''] + rec_var_name
         rec_var_longname = ['', '', '', ''] + rec_var_longname
         rec_var_generic_name = ['', '', '', ''] + rec_var_generic_name
-        rec_var_FORTRAN = ['f10.0', 'f10.1', 'f10.4', 'f10.4'] + rec_var_FORTRAN
-        rec_var_units = ['days since 1800-1-1 00:00:0.0','m','degree_north','degree_west'] + rec_var_units
-        rec_var_type= ['f8'] + ['f4' for spot in rec_vars[2:]]
-        rec_var_strtype= ['EVEN', 'EVEN', 'EVEN', 'EVEN'] + ['' for spot in rec_vars[5:]]
+        rec_var_FORTRAN = ['', '', '', ''] + rec_var_FORTRAN
+        rec_var_units = ['days since 1800-01-01 00:00:00','dbar','degree_north','degree_west'] + rec_var_units
+        rec_var_type= ['f8'] + ['f4' for spot in rec_vars[1:]]
+        rec_var_strtype= ['EVEN', 'EVEN', 'EVEN', 'EVEN'] + ['' for spot in rec_vars[4:]]
         rec_epic_code = [624,1,500,501] + rec_var_epic
-        
+
         var_class = []
         var_class.append(self.rootgrpID.createVariable(rec_vars[0], rec_var_type[0], self.dim_vars[0]))#time1
         var_class.append(self.rootgrpID.createVariable(rec_vars[1], rec_var_type[1], self.dim_vars[1]))#depth
         var_class.append(self.rootgrpID.createVariable(rec_vars[2], rec_var_type[2], self.dim_vars[2]))#lat
         var_class.append(self.rootgrpID.createVariable(rec_vars[3], rec_var_type[3], self.dim_vars[3]))#lon
         
-        for i, v in enumerate(rec_vars[5:]):  #1D coordinate variables
-            var_class.append(self.rootgrpID.createVariable(rec_vars[i+5], rec_var_type[i+5], self.dim_vars))
+        for i, v in enumerate(rec_vars[4:]):  #1D coordinate variables
+            var_class.append(self.rootgrpID.createVariable(rec_vars[i+4], rec_var_type[i+4], self.dim_vars))
 
         ### add variable attributes
         for i, v in enumerate(var_class): #4dimensional for all vars
@@ -808,14 +808,13 @@ class EPIC_NC_SST_cf(object):
         self.rec_vars = rec_vars
 
         
-    def add_coord_data(self, depth_level=-10., latitude=None, longitude=None, time1=None, time2=None, CastLog=False):
+    def add_coord_data(self, depth_level=-10., latitude=None, longitude=None, time=None, CastLog=False):
         """ """
-        self.var_class[0][:] = time1
-        self.var_class[1][:] = time2
+        self.var_class[0][:] = time
 
-        self.var_class[2][:] = depth_level #self.data[pressure_var].values
-        self.var_class[3][:] = latitude
-        self.var_class[4][:] = longitude #PMEL standard direction W is +
+        self.var_class[1][:] = depth_level #self.data[pressure_var].values
+        self.var_class[2][:] = latitude
+        self.var_class[3][:] = longitude #PMEL standard direction W is +
 
     def add_data(self, parameter, value):
         """ """

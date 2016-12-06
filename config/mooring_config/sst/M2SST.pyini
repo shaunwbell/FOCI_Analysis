@@ -1,0 +1,31 @@
+{
+    "MooringID": "M2_HROISST", 
+    "mooring_data_path": [
+    "/Users/bell/Data_Local/sst/M2_NOAA_OI_SST_V2/",
+    "/Users/bell/Data_Local/sst/M2_NOAA_OI_SST_V2/",
+    "/Users/bell/Data_Local/sst/M2_NOAA_OI_SST_V2/",
+    "/Users/bell/Data_Local/sst/M2_NOAA_OI_SST_V2/",
+    "/Users/bell/Data_Local/sst/M2_NOAA_OI_SST_V2/",
+    "/Users/bell/Data_Local/sst/M2_NOAA_OI_SST_V2/",
+    "/Users/bell/ecoraid/2015/Moorings/15bsm2a/final_data/",
+    "/Users/bell/ecoraid/2014/Moorings/14bsm2a/final_data/",
+    "/Users/bell/ecoraid/2013/Moorings/13bsm2a/final_data/",
+    "/Users/bell/ecoraid/2012/Moorings/12bsm2a/final_data/"],
+    "mooring_files": [
+    "NOAA_OI_SST_V2_M2_2015.nc",
+    "NOAA_OI_SST_V2_M2_2014.nc",
+    "NOAA_OI_SST_V2_M2_2013.nc",
+    "NOAA_OI_SST_V2_M2_2012.nc",
+    "NOAA_OI_SST_V2_M2_2011.nc",
+    "NOAA_OI_SST_V2_M2_2010.nc",
+    "15bsm2a_mt4004_0004m.nc",
+    "14bsm2a_mt4016_0004m.nc",
+    "13bsm2a_mt_0004m.nc",
+    "12bsm2a_s37_0001m.nc"], 
+    "legend": ["2015 SST","2014 SST","2013 SST", "2012 SST","2011 SST","2010 SST", "2015 M2", "2014 M2", "2013 M2", "2012 M2"], 
+    "colors": ["k-", "k-", "k-", "k-", "k-", "k-", "r-", "r-","r-","r-"],
+    "dtype": "unqcd",
+    "EPIC_Key": "T_25",
+    "Date_Ticks": "multi_year",
+    "plot_stylesheet": "seaborn-poster"
+}

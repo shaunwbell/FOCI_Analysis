@@ -1,0 +1,49 @@
+Date_Ticks: multi_year
+EPIC_Key: T_25
+MooringID: M4_HROISST
+colors:
+- k-
+- k-
+- k-
+- k-
+- k-
+- k-
+- k-
+- r-
+- r-
+- r-
+dtype: unqcd
+legend:
+- 2015 SST
+- 2014 SST
+- 2013 SST
+- 2012 SST
+- 2011 SST
+- 2010 SST
+- 2009 SST
+- 2013 M4
+- 2012 M4
+- 2009 M4
+mooring_data_path:
+- /Users/bell/Data_Local/sst/M4_NOAA_OI_SST_V2/
+- /Users/bell/Data_Local/sst/M4_NOAA_OI_SST_V2/
+- /Users/bell/Data_Local/sst/M4_NOAA_OI_SST_V2/
+- /Users/bell/Data_Local/sst/M4_NOAA_OI_SST_V2/
+- /Users/bell/Data_Local/sst/M4_NOAA_OI_SST_V2/
+- /Users/bell/Data_Local/sst/M4_NOAA_OI_SST_V2/
+- /Users/bell/Data_Local/sst/M4_NOAA_OI_SST_V2/
+- /Users/bell/ecoraid/2013/Moorings/13bs4a/final_data/
+- /Users/bell/ecoraid/2012/Moorings/12bs4a/final_data/
+- /Users/bell/ecoraid/2009/Moorings/09bsm4a/final_data/
+mooring_files:
+- NOAA_OI_SST_V2_M4_2015.nc
+- NOAA_OI_SST_V2_M4_2014.nc
+- NOAA_OI_SST_V2_M4_2013.nc
+- NOAA_OI_SST_V2_M4_2012.nc
+- NOAA_OI_SST_V2_M4_2011.nc
+- NOAA_OI_SST_V2_M4_2010.nc
+- NOAA_OI_SST_V2_M4_2009.nc
+- 13bs4a_s39_0008m.nc
+- 12bs4a_s39_0005m.nc
+- 09bsm4a_sc_0006m.nc
+plot_stylesheet: seaborn-poster
