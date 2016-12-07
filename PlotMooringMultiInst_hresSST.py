@@ -163,29 +163,43 @@ if args.multiplot_overlay:
 		nctime = get_UDUNITS(EPIC2Datetime(ncdata['time'],ncdata['time2']),'days since 0001-01-01') + 1.
 
 		#find and replace missing values with nans so they don't plot
-		try:
-			ncdata[plot_var][np.where(ncdata[plot_var] >1e30)] = np.nan
-			label_thin = label_thin + [label[ind]]
-		except KeyError:
-			pass
+		for var in plot_var:
+			try:
+				ncdata[var][np.where(ncdata[var] >1e30)] = np.nan
+				label_thin = label_thin + [label[ind]]
+			except KeyError:
+				pass
 
 		#Plot data
 		plt.hold(True)
-		try:
-			plt.plot(nctime, ncdata[plot_var][:,0,0,0],color_options[ind],linewidth=0.25)
-		except KeyError: #if the file doesn't have the specified epic_key it will through an exception
-			print "Failed to plot {0}".format(plot_var)
-			continue
-
+		for var in plot_var:
+			if var in ['T_25']:
+				try:
+					ncdata['ICEC_2025'][np.where(ncdata['ICEC_2025'] >1e30)] = np.nan
+					ncdata[var][np.where(ncdata['ICEC_2025'] > 1)] = np.nan
+					plt.plot(nctime, ncdata[var][:,0,0,0],color_options[ind],linewidth=0.25)
+				except KeyError: #if the file doesn't have the specified epic_key it will through an exception
+					print "Failed to plot {0}".format(var)
+					continue
+			else:
+				try:
+					plt.plot(nctime, ncdata[var][:,0,0,0],color_options[ind],linewidth=0.25)
+				except KeyError: #if the file doesn't have the specified epic_key it will through an exception
+					print "Failed to plot {0}".format(var)
+					continue
 		#setup bouds
-		if nctime.max() > databounds['max_t']:
-			databounds['max_t'] = nctime.max()
-		if nctime.min() < databounds['min_t']:
-			databounds['min_t'] = nctime.min()
-		if np.nanmax(ncdata[plot_var][:,0,0,0]) > databounds['max_v']:
-			databounds['max_v'] = np.nanmax(ncdata[plot_var][:,0,0,0])
-		if np.nanmin(ncdata[plot_var][:,0,0,0]) < databounds['min_v']:
-			databounds['min_v'] = np.nanmin(ncdata[plot_var][:,0,0,0])
+		for var in plot_var:
+			try:
+				if nctime.max() > databounds['max_t']:
+					databounds['max_t'] = nctime.max()
+				if nctime.min() < databounds['min_t']:
+					databounds['min_t'] = nctime.min()
+				if np.nanmax(ncdata[var][:,0,0,0]) > databounds['max_v']:
+					databounds['max_v'] = np.nanmax(ncdata[var][:,0,0,0])
+				if np.nanmin(ncdata[var][:,0,0,0]) < databounds['min_v']:
+					databounds['min_v'] = np.nanmin(ncdata[var][:,0,0,0])
+			except KeyError:
+				pass
 
 	#set bounds if estabilshed by user
 	if args.manual_timebounds:
@@ -227,6 +241,6 @@ if args.multiplot_overlay:
 	#fig.autofmt_xdate()
 	DefaultSize = fig.get_size_inches()
 	fig.set_size_inches( (DefaultSize[0], DefaultSize[1]) )
-	plt.savefig('images/'+ MooringID + '_'+plot_var+'_'+datatype+'_all.'+output_type, bbox_inches='tight', dpi = (300))
+	plt.savefig('images/'+ MooringID + '_'+plot_var[0]+'_'+datatype+'.'+output_type, bbox_inches='tight', dpi = (300))
 	plt.close()
 
