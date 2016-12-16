@@ -295,7 +295,7 @@ if args.sitemap:
 
     # Mooring Data
     x_moor, y_moor = m([-1. * sta_long[0],],sta_lat)
-    x_close, y_close = m([station_1_modelpt[1],], [station_1_modelpt[0],])
+    x_close, y_close = m([-1. * station_1_modelpt[1],], [station_1_modelpt[0],])
 
     #ETOPO 5 contour data 
     ex, ey = m(elons, elats)
