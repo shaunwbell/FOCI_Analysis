@@ -294,8 +294,10 @@ if args.sitemap:
 
 
     # Mooring Data
-    x_moor, y_moor = m([-1. * sta_long[0],],sta_lat)
-    x_close, y_close = m([-1. * station_1_modelpt[1],], [station_1_modelpt[0],])
+    x_moor, y_moor = m([-1. * sta_long[0],],sta_lat[0])
+    x_close, y_close = m([station_1_modelpt[1],], [station_1_modelpt[0],])
+    print "plotting closest point at {x_moor},{y_moor} - {lat_moor},{lon_moor}".format(x_moor=x_close,y_moor=y_close,lat_moor=sta_lat[0],lon_moor=-1.*sta_long[0])
+    print "plotting mooring point at {x_moor},{y_moor} - {lat_moor},{lon_moor}".format(x_moor=x_moor,y_moor=y_moor,lat_moor=station_1_modelpt[0],lon_moor=-1.*station_1_modelpt[1])
 
     #ETOPO 5 contour data 
     ex, ey = m(elons, elats)
