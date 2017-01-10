@@ -35,18 +35,21 @@ colors:
 - k-
 - k-
 - k-
+# start mooring
+- b-
+- b-
+- b-
+- b-
+- b-
+- b-
 - r-
+- b-
 - r-
-- r-
-- r-
-- r-
-- r-
-- r-
-- r-
-- r-
-- r-
-- r-
-- r-
+- b-
+- b-
+- b-
+- b-
+- b-
 mooring_data_path:
 - /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
 - /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
@@ -75,6 +78,10 @@ mooring_data_path:
 - /Volumes/WDC_internal/Users/bell/ecoraid/2009/Moorings/09bs8a/final_data/
 - /Volumes/WDC_internal/Users/bell/ecoraid/2008/Moorings/08bsv8a/final_data/
 - /Volumes/WDC_internal/Users/bell/ecoraid/2008/Moorings/08bs8a/final_data/
+- /Volumes/WDC_internal/Users/bell/ecoraid/2007/Moorings/07bs8a/final_data/
+- /Volumes/WDC_internal/Users/bell/ecoraid/2006/Moorings/06bs8a/final_data/
+- /Volumes/WDC_internal/Users/bell/ecoraid/2005/Moorings/05bs8a/final_data/
+- /Volumes/WDC_internal/Users/bell/ecoraid/2005/Moorings/05bs8b/final_data/
 mooring_files:
 - NOAA_OI_SST_V2_M8_2000.nc
 - NOAA_OI_SST_V2_M8_2001.nc
@@ -103,6 +110,10 @@ mooring_files:
 - 09bs8a_sc_0021m.nc
 - 08bsv8a_s39_0005m.nc
 - 08bs8a_sc_0021m.nc 
+- 07bs8a_sc_0021m.nc
+- 06bs8a_sc_0022m.nc
+- 05bs8a_sc_0014m.nc
+- 05bs8b_sc_0021m.nc
 legend:
 - 2000 sst
 - 2001 sst
@@ -121,13 +132,17 @@ legend:
 - 2014 sst
 - 2015 sst
 - 2016 sst
-- 2015
-- 2014
-- 2013
-- 2012
-- 2011
-- 2010
-- 2009
-- 2009
-- 2008
-- 2008
+- 2015 23m
+- 2014 27m
+- 2013 21m
+- 2012 21m
+- 2011 21m
+- 2010 21m
+- 2009 *5m
+- 2009 21m
+- 2008 *5m
+- 2008 21m
+- 2007 21m 
+- 2006 22m
+- 2005 14m
+- 2005 21mm

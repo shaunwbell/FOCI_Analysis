@@ -32,20 +32,6 @@ def ncopen(ncfile):
     """
     nchandle = Dataset(ncfile,'r')
     return nchandle
-
-def mf_ncopen(ncfiles, aggdim='time'):
-    """
-    Parameters
-    ----------
-    TODO
-    
-    Returns
-    -------
-    TODO
-              
-    """
-    nchandle = MFDataset(ncfiles,'r', aggdim=aggdim)
-    return nchandle
         
 def ncclose(nchandle):
     """
@@ -154,7 +140,7 @@ class EPIC_NC(object):
         self.rootgrpID = rootgrpID
         return ( rootgrpID )
         
-    def sbeglobal_atts(self, coord_system="GEOGRAPHICAL", Water_Mass="G"):
+    def sbeglobal_atts(self, DATA_CMNT=None, coord_system="GEOGRAPHICAL", Water_Mass="G"):
         """
         Assumptions
         -----------
@@ -166,7 +152,7 @@ class EPIC_NC(object):
         """
         
         self.rootgrpID.CREATION_DATE = datetime.datetime.utcnow().strftime("%B %d, %Y %H:%M UTC")
-        self.rootgrpID.DATA_CMNT = 'Derived from North American Regional Reanalysis Data'
+        self.rootgrpID.DATA_CMNT = DATA_CMNT
         self.rootgrpID.COORD_SYSTEM = coord_system
         self.rootgrpID.WATER_MASS = Water_Mass
         
@@ -334,7 +320,7 @@ class EPIC_NC_rad(object):
         self.rootgrpID = rootgrpID
         return ( rootgrpID )
         
-    def sbeglobal_atts(self, coord_system="GEOGRAPHICAL", Water_Mass="G"):
+    def sbeglobal_atts(self, DATA_CMNT=None, coord_system="GEOGRAPHICAL", Water_Mass="G"):
         """
         Assumptions
         -----------
@@ -346,7 +332,7 @@ class EPIC_NC_rad(object):
         """
         
         self.rootgrpID.CREATION_DATE = datetime.datetime.utcnow().strftime("%B %d, %Y %H:%M UTC")
-        self.rootgrpID.DATA_CMNT = 'Derived from North American Regional Reanalysis Data'
+        self.rootgrpID.DATA_CMNT = DATA_CMNT
         self.rootgrpID.COORD_SYSTEM = coord_system
         self.rootgrpID.WATER_MASS = Water_Mass
         
@@ -514,7 +500,7 @@ class EPIC_NC_SST(object):
         self.rootgrpID = rootgrpID
         return ( rootgrpID )
         
-    def sbeglobal_atts(self, coord_system="GEOGRAPHICAL", Water_Mass="G"):
+    def sbeglobal_atts(self, DATA_CMNT=None, coord_system="GEOGRAPHICAL", Water_Mass="G"):
         """
         Assumptions
         -----------
@@ -526,7 +512,7 @@ class EPIC_NC_SST(object):
         """
         
         self.rootgrpID.CREATION_DATE = datetime.datetime.utcnow().strftime("%B %d, %Y %H:%M UTC")
-        self.rootgrpID.DATA_CMNT = 'Derived from NOAA OI SST V2 High Resolution Dataset'
+        self.rootgrpID.DATA_CMNT = DATA_CMNT
         self.rootgrpID.COORD_SYSTEM = coord_system
         self.rootgrpID.WATER_MASS = Water_Mass
         
@@ -694,7 +680,7 @@ class EPIC_NC_SST_cf(object):
         self.rootgrpID = rootgrpID
         return ( rootgrpID )
         
-    def sbeglobal_atts(self, coord_system="GEOGRAPHICAL", Water_Mass="G"):
+    def sbeglobal_atts(self, DATA_CMNT=None, coord_system="GEOGRAPHICAL", Water_Mass="G"):
         """
         Assumptions
         -----------
@@ -706,7 +692,7 @@ class EPIC_NC_SST_cf(object):
         """
         
         self.rootgrpID.CREATION_DATE = datetime.datetime.utcnow().strftime("%B %d, %Y %H:%M UTC")
-        self.rootgrpID.DATA_CMNT = 'Derived from NOAA OI SST V2 High Resolution Dataset'
+        self.rootgrpID.DATA_CMNT = DATA_CMNT
         self.rootgrpID.COORD_SYSTEM = coord_system
         self.rootgrpID.WATER_MASS = Water_Mass
         

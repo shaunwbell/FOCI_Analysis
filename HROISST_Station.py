@@ -43,7 +43,7 @@ __keywords__ = 'NCEP','Unimak', 'Shumagin','3hr filtered', 'U,V','Winds', 'Gulf 
 def write2epic( file_name, stationid, time, lat_lon, data ):
         ncinstance = ncutil.EPIC_NC_SST(savefile=file_name)
         ncinstance.file_create()
-        ncinstance.sbeglobal_atts()
+        ncinstance.sbeglobal_atts(DATA_CMNT='HRES V2 OISST')
         ncinstance.PMELglobal_atts(Station_Name=stationid, file_name=( __file__.split('/')[-1]) )
         ncinstance.dimension_init(len_time=len(time[0]))
         ncinstance.variable_init()
@@ -56,7 +56,7 @@ def write2epic( file_name, stationid, time, lat_lon, data ):
 def write2epic_cf( file_name, stationid, time, lat_lon, data ):
         ncinstance = ncutil.EPIC_NC_SST_cf(savefile=file_name)
         ncinstance.file_create()
-        ncinstance.sbeglobal_atts()
+        ncinstance.sbeglobal_atts(DATA_CMNT='HRES V2 OISST')
         ncinstance.PMELglobal_atts(Station_Name=stationid, file_name=( __file__.split('/')[-1]) )
         ncinstance.dimension_init(len_time=len(time))
         ncinstance.variable_init()
