@@ -186,7 +186,7 @@ def triangle_smoothing(data_in):
 
 def etopo5_data():
     """ read in etopo5 topography/bathymetry. """
-    file = '/Volumes/WDC_internal/Users/bell/in_and_outbox/MapGrids/etopo5.nc'
+    file = '/Volumes/WDC_internal/Users/bell/in_and_outbox/Ongoing_Analysis/MapGrids/etopo5.nc'
     etopodata = Dataset(file)
     
     topoin = etopodata.variables['bath'][:]
@@ -279,7 +279,7 @@ for yy in years:
         if args.cf:    
             #days since 1800-1-1 00:00:0.0
             date_str_cf = []
-            write2epic_cf( outfile, station_name[0], date_str_cf, stn1_modelpt, [station_1u_f, station_1v_f, station_1at])
+            write2epic_cf( outfile, station_name[0], date_str_cf, station_1_modelpt, [station_1u_f, station_1v_f, station_1at])
         else:
             write2epic( outfile, station_name[0], [epic_time, epic_time1], station_1_modelpt, [station_1u_f, station_1v_f, station_1at])
 

@@ -140,7 +140,7 @@ class EPIC_NC(object):
         self.rootgrpID = rootgrpID
         return ( rootgrpID )
         
-    def sbeglobal_atts(self, DATA_CMNT=None, coord_system="GEOGRAPHICAL", Water_Mass="G"):
+    def sbeglobal_atts(self, DATA_CMNT='', coord_system="GEOGRAPHICAL", Water_Mass="G"):
         """
         Assumptions
         -----------
@@ -320,7 +320,7 @@ class EPIC_NC_rad(object):
         self.rootgrpID = rootgrpID
         return ( rootgrpID )
         
-    def sbeglobal_atts(self, DATA_CMNT=None, coord_system="GEOGRAPHICAL", Water_Mass="G"):
+    def sbeglobal_atts(self, DATA_CMNT='', coord_system="GEOGRAPHICAL", Water_Mass="G"):
         """
         Assumptions
         -----------
@@ -500,7 +500,7 @@ class EPIC_NC_SST(object):
         self.rootgrpID = rootgrpID
         return ( rootgrpID )
         
-    def sbeglobal_atts(self, DATA_CMNT=None, coord_system="GEOGRAPHICAL", Water_Mass="G"):
+    def sbeglobal_atts(self, DATA_CMNT='', coord_system="GEOGRAPHICAL", Water_Mass="G"):
         """
         Assumptions
         -----------
@@ -680,7 +680,7 @@ class EPIC_NC_SST_cf(object):
         self.rootgrpID = rootgrpID
         return ( rootgrpID )
         
-    def sbeglobal_atts(self, DATA_CMNT=None, coord_system="GEOGRAPHICAL", Water_Mass="G"):
+    def sbeglobal_atts(self, DATA_CMNT='', coord_system="GEOGRAPHICAL", Water_Mass="G"):
         """
         Assumptions
         -----------
