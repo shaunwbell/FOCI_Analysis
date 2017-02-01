@@ -50,11 +50,16 @@ ftp.retrbinary('RETR ' + filename, fhandle.write)                               
 fhandle.close()  
 ftp.close()
 
+if args.dataset == 'mean':
+	var = 'sst'
+else:
+	var = args.dataset
+
 if args.plot:
 	df = xa.open_dataset(path + filename)
 	pd = df.isel(time=slice(-28,None), lat=slice(-180,-45), lon=slice(-750,-500)) #last four weeks
 
-	facet = pd[args.dataset].plot(x='lon', y='lat', col='time', col_wrap=7,robust=True,figsize=(11,8.5))
+	facet = pd[var].plot(x='lon', y='lat', col='time', col_wrap=7,robust=True,figsize=(11,8.5))
 	facet.fig.set_size_inches( (16.5, 8.5) )	
 	facet.fig.savefig(filename.replace('.nc',datetime.datetime.now().strftime('%b%d')+'.png'), dpi = (300))
 	plt.close()
