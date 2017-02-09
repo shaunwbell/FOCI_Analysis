@@ -18,6 +18,7 @@ import xarray as xa
 import matplotlib as mpl
 #mpl.use('Agg') 
 import matplotlib.pyplot as plt
+import cmocean
 
 __author__   = 'Shaun Bell'
 __email__    = 'shaun.bell@noaa.gov'
@@ -25,7 +26,7 @@ __created__  = datetime.datetime(2017, 1, 30)
 __modified__ = datetime.datetime(2017, 1, 30)
 __version__  = "0.1.0"
 __status__   = "Development"
-__keywords__ = 'xarray','SST'
+__keywords__ = 'xarray','SST','anom','NOAA HRES OI V2 SST'
 
 """--------------------------------helper Routines---------------------------------------"""
 
@@ -35,7 +36,7 @@ __keywords__ = 'xarray','SST'
 parser = argparse.ArgumentParser(description='NASA WorldView MODIS Retrieval')
 parser.add_argument('year', metavar='year', type=str, help='year of data set')               
 parser.add_argument('dataset', metavar='dataset', type=str, help='dataset ("anom","err","mean")' )
-parser.add_argument('-plot','--plot', action="store_true", help='plot last 4 weeks' )
+parser.add_argument('-plot','--plot', type=str, help='path to save plot of last 4 weeks to' )
                   
 args = parser.parse_args()
 
@@ -52,14 +53,16 @@ ftp.close()
 
 if args.dataset == 'mean':
 	var = 'sst'
+	cmap = cmocean.cm.thermal
 else:
 	var = args.dataset
+	cmap = 'RdBu_r'
 
 if args.plot:
 	df = xa.open_dataset(path + filename)
 	pd = df.isel(time=slice(-28,None), lat=slice(-180,-45), lon=slice(-750,-500)) #last four weeks
 
-	facet = pd[var].plot(x='lon', y='lat', col='time', col_wrap=7,robust=True,figsize=(11,8.5))
+	facet = pd[var].plot(x='lon', y='lat', col='time', col_wrap=7,robust=True,figsize=(11,8.5), cmap=cmap)
 	facet.fig.set_size_inches( (16.5, 8.5) )	
-	facet.fig.savefig(filename.replace('.nc',datetime.datetime.now().strftime('%b%d')+'.png'), dpi = (300))
+	facet.fig.savefig(args.plot + filename.replace('.nc',datetime.datetime.now().strftime('%b%d')+'.png'), dpi = (300))
 	plt.close()
