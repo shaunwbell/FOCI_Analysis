@@ -23,7 +23,7 @@ import numpy as np
 from netCDF4 import Dataset
 
 # User Stack
-import general_utilities.haversine as sphered
+import utilities.haversine as sphered
 from utilities import ncutilities as ncutil
 
 # Visual Stack
@@ -185,9 +185,8 @@ def triangle_smoothing(data_in):
 
 """------------------------- Topo   Modules -------------------------------------------"""
 
-def etopo5_data():
+def etopo5_data(file='etopo5.nc'):
     """ read in etopo5 topography/bathymetry. """
-    file = '/Users/bell/Data_Local/MapGrids/etopo5.nc'
     etopodata = Dataset(file)
     
     topoin = etopodata.variables['bath'][:]
@@ -204,7 +203,7 @@ def etopo5_data():
 """------------------------- Main   Modules -------------------------------------------"""
 
 ### list of files
-NARR = '/Users/bell/Data_Local/Reanalysis_Files/NARR/3hourly/'
+NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/3hourly/'
 infile = [NARR + 'uwnd.10m.2003.nc']
 
 
@@ -230,7 +229,7 @@ print "stn2 nearest point to %s, %s which is lat:%s , lon:%s" \
     % (sta_lat[1], sta_long[1], stn2_modelpt[0], stn2_modelpt[1])    
 
 #loop over all requested data   
-years = range(1980,2016)
+years = range(2015,2017)
 
 for yy in years:
     # retrieve only these location's data
@@ -297,7 +296,7 @@ for yy in years:
     
 plot_geoloc = True
 if plot_geoloc:
-    (topoin, elats, elons) = etopo5_data()
+    (topoin, elats, elons) = etopo5_data(file='/Volumes/WDC_internal/Users/bell/in_and_outbox/Ongoing_Analysis/MapGrids/etopo5.nc')
     
     fig = plt.figure()
     ax = plt.subplot(111)

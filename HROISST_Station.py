@@ -109,7 +109,7 @@ if args.DataPath:
 else:
     NCEP = '/Volumes/WDC_internal/Users/bell/Data_Local/sst/NOAA_OI_SST_V2/'
 
-infile = [NCEP + 'sst.day.mean.1981.v2.nc']
+infile = [NCEP + 'sst.day.anom.1981.v2.nc']
 print infile
 
 #################
@@ -144,7 +144,7 @@ for yy in years:
     # retrieve only these location's data
 
     ### SST files
-    infile = NCEP + 'sst.day.mean.'+ str(yy) + '.v2.nc'
+    infile = NCEP + 'sst.day.anom.'+ str(yy) + '.v2.nc'
     print "Working on file " + infile
     df = EcoFOCI_netCDF(infile)
     vars_dic = df.get_vars()
@@ -156,7 +156,7 @@ for yy in years:
                 stn1_data[v] = nchandle.variables[v][:,stn1_pt[3], stn1_pt[4]]
         except ValueError: #if parameter is not of expected dimensions
             stn1_data[v] = nchandle.variables[v][:]
-    stn1_sst = stn1_data['sst']
+    stn1_sst = stn1_data['anom']
     df.close()
 
     ### IceConc files
@@ -198,7 +198,7 @@ if args.plot:
     
     fig = plt.figure()
     ax = plt.subplot(111)
-    m = Basemap(resolution='i',projection='merc', llcrnrlat=55, 
+    m = Basemap(resolution='i',projection='merc', llcrnrlat=45, 
         urcrnrlat=65,llcrnrlon=-180,urcrnrlon=-155, lat_ts=60)
 
     # Mooring Data
