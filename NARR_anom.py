@@ -168,7 +168,7 @@ def find_nearest(a, a0):
 anomperiod='daily'
 ncvar = 'air'
 ncfile_ltmean = '/Users/bell/Data_Local/Reanalysis_Files/NARR/daily/'+ ncvar +'.2m.day.ltm.nc'
-ncfile_mean = '/Users/bell/Data_Local/Reanalysis_Files/NARR/daily/'+ ncvar +'.2m.2015.nc'
+ncfile_mean = '/Users/bell/Data_Local/Reanalysis_Files/NARR/daily/'+ ncvar +'.2m.2016.nc'
 
 nchandle = Dataset(ncfile_ltmean,'r')
 params = get_vars(nchandle)

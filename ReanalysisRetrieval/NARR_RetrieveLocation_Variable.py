@@ -120,15 +120,15 @@ def ncreadfile_dic_slice(nchandle, params, height_ind=None, lat_ind=None, lon_in
 
 
 ### Grab grid points for future slicing - assume grid is same in all model output
-NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/monthly/'
-infile = [NARR + 'uwnd.10m.mon.mean.nc']
+NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/daily/'
+infile = [NARR + 'uwnd.10m.2016.nc']
 
 lat_lon = get_geocoords(infile[0])
 
 #stn    ['1','2']
-station_name = ['C2']
-sta_lat = [71.23]
-sta_long = [164.221]
+station_name = ['UP stn_1']
+sta_lat = [54.5]
+sta_long = [161.0]
 
 #Find NARR nearest point to moorings - haversine formula
 # NARR data is -180->180 (positive east), Moorings are usually expressed +W for FOCI
@@ -188,15 +188,15 @@ import pandas as pd
 import xarray as xa
 
 #index = [station_1[3],station_1[4]]
-index=[242,112]
-ufilein='/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/monthly/uwnd.10m.mon.mean.nc'
+index=[195,76]
+ufilein='/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/daily/uwnd.10m.2016.nc'
 udata = xa.open_dataset(ufilein, decode_cf=False)
 udata = xa.decode_cf(udata,mask_and_scale=False)
-dum = udata.uwnd[:443,242,112].groupby('time.month').mean()
+dum = udata.uwnd[:443,195,76].resample('D', udata.time, how='mean')
 print dum.to_pandas().to_csv()
 
-vfilein='/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/monthly/vwnd.10m.mon.mean.nc'
+vfilein='/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/daily/vwnd.10m.2016.nc'
 vdata = xa.open_dataset(vfilein, decode_cf=False)
 vdata = xa.decode_cf(vdata,mask_and_scale=False)
-dvm = vdata.vwnd[:443,242,112].groupby('time.month').mean()
+dvm = vdata.vwnd[:443,195,76].resample('D', vdata.time, how='mean')
 print dvm.to_pandas().to_csv()

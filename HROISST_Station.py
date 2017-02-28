@@ -144,7 +144,7 @@ for yy in years:
     # retrieve only these location's data
 
     ### SST files
-    infile = NCEP + 'sst.day.anom.'+ str(yy) + '.v2.nc'
+    infile = NCEP + 'sst.day.mean.'+ str(yy) + '.v2.nc'
     print "Working on file " + infile
     df = EcoFOCI_netCDF(infile)
     vars_dic = df.get_vars()
@@ -156,7 +156,7 @@ for yy in years:
                 stn1_data[v] = nchandle.variables[v][:,stn1_pt[3], stn1_pt[4]]
         except ValueError: #if parameter is not of expected dimensions
             stn1_data[v] = nchandle.variables[v][:]
-    stn1_sst = stn1_data['anom']
+    stn1_sst = stn1_data['sst']
     df.close()
 
     ### IceConc files

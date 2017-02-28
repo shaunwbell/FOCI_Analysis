@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
 """
 Created on Tue Jan 17 10:42:45 2017
 
@@ -40,23 +40,27 @@ parser.add_argument('-plot','--plot', type=str, help='path to save plot of last 
                   
 args = parser.parse_args()
 
+if args.dataset == 'mean':
+	var = 'sst'
+	cmap = cmocean.cm.thermal
+	param = args.dataset
+elif args.dataset == 'icec':
+	var = 'icec'
+	param = 'mean'
+else:
+	var = args.dataset
+	cmap = 'RdBu_r'
+	param = args.dataset
 
 ftp = FTP('ftp.cdc.noaa.gov',user='anonymous')
 ftp.cwd('Datasets/noaa.oisst.v2.highres')
 path = '/Volumes/WDC_internal/Users/bell/Data_Local/sst/NOAA_OI_SST_V2/'
-filename = 'sst.day.'+args.dataset+'.'+args.year+'.v2.nc'
+filename = var+'.day.'+param+'.'+args.year+'.v2.nc'
 # download
 fhandle = open(path + filename, 'wb')
 ftp.retrbinary('RETR ' + filename, fhandle.write)                                       # Imprimimos por pantalla lo que estamos descargando        #fhandle.close()
 fhandle.close()  
 ftp.close()
-
-if args.dataset == 'mean':
-	var = 'sst'
-	cmap = cmocean.cm.thermal
-else:
-	var = args.dataset
-	cmap = 'RdBu_r'
 
 if args.plot:
 	df = xa.open_dataset(path + filename)
