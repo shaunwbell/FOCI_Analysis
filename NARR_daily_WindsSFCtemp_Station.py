@@ -271,7 +271,7 @@ for yy in years:
     epic_time, epic_time1 = pydate2EPIC(pydate)
 
     # output u,v wind components from model grid points
-    save_to_nc = False
+    save_to_nc = True
     if save_to_nc:
         # write to NetCDF
         outfile = 'data/NARR_' + station_name[0] + '_' + str(yy) + '.nc'
