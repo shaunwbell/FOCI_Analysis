@@ -32,6 +32,7 @@ colors:
 - k-
 - k-
 - k-
+- k-
 # start mooring
 - b-
 - b-
@@ -48,19 +49,20 @@ colors:
 - b-
 - b-
 mooring_data_path:
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
-#- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
+- /Volumes/WDC_internal/Users/bell/Data_Local/sst/M8_NOAA_OI_SST_V2/epic_conventions/
 #- /Volumes/WDC_internal/Users/bell/ecoraid/2015/Moorings/15bs8a/final_data/
 #- /Volumes/WDC_internal/Users/bell/ecoraid/2014/Moorings/14bs8a/final_data/
 #- /Volumes/WDC_internal/Users/bell/ecoraid/2013/Moorings/13bs8a/working/
@@ -81,37 +83,38 @@ mooring_data_path:
 - /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
 - /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
 - /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
-#- /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
 - /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
-#- /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
+- /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
+- /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
 - /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
 - /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
 - /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
 - /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
 - /Volumes/WDC_internal/Users/bell/in_and_outbox/2017/stabeno/jan/M2_M8_SSTTemp_analysis/mooringdata/M8/
 mooring_files:
-#- NOAA_OI_SST_V2_M8_2004.nc
-#- NOAA_OI_SST_V2_M8_2005.nc
-#- NOAA_OI_SST_V2_M8_2006.nc
-#- NOAA_OI_SST_V2_M8_2007.nc
-#- NOAA_OI_SST_V2_M8_2008.nc
-#- NOAA_OI_SST_V2_M8_2009.nc
-#- NOAA_OI_SST_V2_M8_2010.nc
-#- NOAA_OI_SST_V2_M8_2011.nc
-#- NOAA_OI_SST_V2_M8_2012.nc
-#- NOAA_OI_SST_V2_M8_2013.nc
-#- NOAA_OI_SST_V2_M8_2014.nc
-#- NOAA_OI_SST_V2_M8_2015.nc
-#- NOAA_OI_SST_V2_M8_2016.nc
+- NOAA_OI_SST_V2_M8_2004.nc
+- NOAA_OI_SST_V2_M8_2005.nc
+- NOAA_OI_SST_V2_M8_2006.nc
+- NOAA_OI_SST_V2_M8_2007.nc
+- NOAA_OI_SST_V2_M8_2008.nc
+- NOAA_OI_SST_V2_M8_2009.nc
+- NOAA_OI_SST_V2_M8_2010.nc
+- NOAA_OI_SST_V2_M8_2011.nc
+- NOAA_OI_SST_V2_M8_2012.nc
+- NOAA_OI_SST_V2_M8_2013.nc
+- NOAA_OI_SST_V2_M8_2014.nc
+- NOAA_OI_SST_V2_M8_2015.nc
+- NOAA_OI_SST_V2_M8_2016.nc
+- NOAA_OI_SST_V2_M8_2017.nc
 - 15bs8a_s39_0023m.nc
 - 14bs8a_s39_0023m.nc
 - 13bs8a_sc_0021m.unqcd.trimmed_missing.nc
 - 12bs8a_sc_0021m.nc
 - 11bs8a_sc_0021m.nc
 - 10bs8a_sc_0021m.nc
-#- 09bsv8a_s39_0005m.nc
+- 09bsv8a_s39_0005m.nc
 - 09bs8a_sc_0021m.nc
-#- 08bsv8a_s39_0005m.nc
+- 08bsv8a_s39_0005m.nc
 - 08bs8a_sc_0021m.nc 
 - 07bs8a_sc_0021m.nc
 - 06bs8a_sc_0022m.nc
@@ -145,6 +148,7 @@ legend:
 - 2014 sst
 - 2015 sst
 - 2016 sst
+- 2017 sst
 - 2015 23m
 - 2014 27m
 - 2013 21m
