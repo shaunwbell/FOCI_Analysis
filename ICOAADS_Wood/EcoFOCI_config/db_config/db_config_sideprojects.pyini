@@ -1,0 +1,7 @@
+{
+    "database": "SideProjects", 
+    "host": "localhost", 
+    "password": "JPster71", 
+    "user": "bell",
+    "port": 8889
+}
