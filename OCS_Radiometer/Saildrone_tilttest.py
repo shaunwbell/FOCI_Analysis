@@ -34,7 +34,7 @@ def solar_zenith(timestr='2016-01-01 00:00:00', lat='47.6', lon='-122.32'):
         
     return (90. - sun_el, sun_az)
 				
-def rph2za(pitch,roll,heading):
+def prh2za(pitch,roll,heading):
     '''
     from Fortran/IDL subroutine by Paul Ricchiazzi, 25 Feb 97 paul@icess.ucsb.edu
 
@@ -200,13 +200,13 @@ sd1_200msec['sd1_tilt_cos_sza']=np.nan
 count=0
 for index,row in sd1_200msec.iterrows():
     
-    if not np.isnan(row['sw_shaded_radiometer:raw:total (watt_per_m2)']) and (count % 5 == 0):
+    if not np.isnan(row['sw_shaded_radiometer:raw:total (watt_per_m2)']):
         sd1_200msec['sd1_tilt_sza'][index], sd1_200msec['sd1_tilt_az'][index] = solar_zenith(index.strftime('%Y-%m-%d %H:%M:%S.%f'),lat=str(row['gps:location:lat (gps_coord)']),lon=str(row['gps:location:lng (gps_coord)']))
   
 
-        instzen,instaz = rph2za(row['sw_shaded_radiometer:raw:pitch (degrees)'],
-                                row['sw_shaded_radiometer:raw:roll (degrees)'],
-                                row['sw_shaded_radiometer:raw:yaw (degrees)'])
+        instzen,instaz = prh2za(row['sw_shaded_radiometer:raw:wing_pitch (degrees)'],
+                                row['sw_shaded_radiometer:raw:wing_roll (degrees)'],
+                                row['sw_shaded_radiometer:raw:wing_yaw (degrees)'])
         cos_sza = muslope(sd1_200msec['sd1_tilt_sza'][index],sd1_200msec['sd1_tilt_az'][index],instzen,instaz)
         sd1_200msec['sd1_tilt_cos_sza'][index] = np.rad2deg(np.arccos(cos_sza))
         k_ratio = ( row['sw_shaded_radiometer:raw:diffuse (watt_per_m2)'] * cos_sza ) / (row['sw_shaded_radiometer:raw:total (watt_per_m2)'] - row['sw_shaded_radiometer:raw:diffuse (watt_per_m2)']) 
@@ -218,7 +218,7 @@ for index,row in sd1_200msec.iterrows():
     
 sd2_200msec['tilt_normal'] = np.nan
 sd2_200msec['sd2_tilt_sza']= np.nan
-sd2_200msec['sd2_tilt_az']=  np.nan
+sd2_200msec['sd2_tilt_az'] =  np.nan
 sd2_200msec['sd2_tilt_cos_sza']=np.nan
 
 count=0
@@ -228,14 +228,32 @@ for index,row in sd2_200msec.iterrows():
         sd2_200msec['sd2_tilt_sza'][index], sd2_200msec['sd2_tilt_az'][index] = solar_zenith(index.strftime('%Y-%m-%d %H:%M:%S.%f'),lat=str(row['gps:location:lat (gps_coord)']),lon=str(row['gps:location:lng (gps_coord)']))
   
 
-        instzen,instaz = rph2za(row['sw_shaded_radiometer:raw:pitch (degrees)'],
-                                row['sw_shaded_radiometer:raw:roll (degrees)'],
-                                row['sw_shaded_radiometer:raw:yaw (degrees)'])
+        instzen,instaz = prh2za(row['sw_shaded_radiometer:raw:wing_pitch (degrees)'],
+                                row['sw_shaded_radiometer:raw:wing_roll (degrees)'],
+                                row['sw_shaded_radiometer:raw:wing_yaw (degrees)'])
         cos_sza = muslope(sd2_200msec['sd2_tilt_sza'][index],sd2_200msec['sd2_tilt_az'][index],instzen,instaz)
         sd2_200msec['sd2_tilt_cos_sza'][index] = np.rad2deg(np.arccos(cos_sza))
         k_ratio = ( row['sw_shaded_radiometer:raw:diffuse (watt_per_m2)'] * cos_sza ) / (row['sw_shaded_radiometer:raw:total (watt_per_m2)'] - row['sw_shaded_radiometer:raw:diffuse (watt_per_m2)']) 
-        sd2_200msec['tilt_normal'][index] = (np.cos(np.deg2rad(sd2['sd2_tilt_sza'][index])) + k_ratio)/(cos_sza + k_ratio) 
+        sd2_200msec['tilt_normal'][index] = (np.cos(np.deg2rad(sd2_200msec['sd2_tilt_sza'][index])) + k_ratio)/(cos_sza + k_ratio) 
         
     if count % 100 == 0:
         print count
     count +=1  
+    
+fig, axes = plt.subplots(nrows=3, ncols=1)
+(sd1_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[0])
+(sd1_200msec['tilt_normal'].resample('1s').mean()*sd1_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[0])
+(sd1_200msec['tilt_normal'].resample('1s').mean()*sd1_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[0])
+axes[0].set_title('sd 1005 tilt corrected')
+axes[0].set_xticks([])
+axes[0].set_ylim([-100, 10000])
+axes[0].legend(['uncorrected', 'unshaded corrected','shaded corrected'])
+
+(sd2_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[1])
+(sd2_200msec['tilt_normal'].resample('1s').mean()*sd2_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[1])
+(sd2_200msec['tilt_normal'].resample('1s').mean()*sd2_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[1])
+axes[1].set_title('sd 1006 tilt corrected')
+axes[1].set_xticks([])
+axes[1].set_ylim([-100, 10000])
+axes[1].legend(['uncorrected', 'unshaded corrected','shaded corrected'])
+
