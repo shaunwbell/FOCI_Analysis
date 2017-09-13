@@ -139,18 +139,23 @@ def muslope(sunzen,sunaz,nrmzen,nrmaz):
 
 """------------------------------- MAIN ----------------------------------------"""
 
-sdf1='/Volumes/WDC_internal/Users/bell/in_and_outbox/2017/keane/sd_shakedown/sd-1005_20170828T1900-20170829T0400_radiometers-v01.csv'
+sdf1='/Users/bell/in_and_outbox/2017/keane/sd_shakedown/sd-1005_20170901T2100-20170901T2200_raw_payload-v01.csv'
 sd1 = pd.read_csv(sdf1,parse_dates=['isotime'])
 sd1.set_index(pd.DatetimeIndex(sd1['isotime']),inplace=True)
 sd1_200msec = sd1.resample('200L').mean()
 sd1_1sec = sd1.resample('S').mean()
 
-sdf2='/Volumes/WDC_internal/Users/bell/in_and_outbox/2017/keane/sd_shakedown/sd-1006_20170828T1900-20170829T0400_radiometers-v01.csv'
+sdf2='/Users/bell/in_and_outbox/2017/keane/sd_shakedown/sd-1006_20170901T2100-20170901T2200_raw_payload-v01.csv'
 sd2 = pd.read_csv(sdf2,parse_dates=['isotime'])
 sd2.set_index(pd.DatetimeIndex(sd2['isotime']),inplace=True)
 sd2_200msec = sd2.resample('200L').mean()
 sd2_1sec = sd2.resample('S').mean()
 
+sd1_roll_offset = -1.0
+sd1_pitch_offset = 8.3
+
+sd2_roll_offset = -1.2
+sd2_pitch_offset = 7.8
 """
 
 Saildrone uses NED coordinates...
@@ -164,7 +169,9 @@ So positive pitch is nose down, positive yaw is clockwise, positive roll is righ
 fig, axes = plt.subplots(nrows=1, ncols=1)
 sd1_1sec['lw_radiometer:raw:net_radiation (watt_per_m2)'].plot(ax=axes);
 sd2_1sec['lw_radiometer:raw:net_radiation (watt_per_m2)'].plot(ax=axes);
-plt.legend(['lw:raw:net rad sd1005','lw:raw:net rad sd1006'])
+sd1_1sec['lw_radiometer:raw:downwelling_radiation (watt_per_m2)'].plot(ax=axes);
+sd2_1sec['lw_radiometer:raw:downwelling_radiation (watt_per_m2)'].plot(ax=axes);
+plt.legend(['lw:raw:net rad sd1005','lw:raw:net rad sd1006','lw:raw:downwelling rad sd1005','lw:raw:downwelling rad sd1006'])
 
 fig, axes = plt.subplots(nrows=3, ncols=1)
 sd1_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].plot(ax=axes[0]);
@@ -225,8 +232,8 @@ for index,row in sd1_200msec.iterrows():
         print count
     count +=1   
 
-sd1_200msec['instzen'],sd1_200msec['instaz'] = prh2za(-1*(8+sd1_200msec['sw_shaded_radiometer:raw:wing_pitch (degrees)']),
-                        sd1_200msec['sw_shaded_radiometer:raw:wing_roll (degrees)'],
+sd1_200msec['instzen'],sd1_200msec['instaz'] = prh2za(-1*(sd1_pitch_offset+sd1_200msec['sw_shaded_radiometer:raw:wing_pitch (degrees)']),
+                        sd1_roll_offset+sd1_200msec['sw_shaded_radiometer:raw:wing_roll (degrees)'],
                         sd1_200msec['sw_shaded_radiometer:raw:wing_yaw (degrees)'])
 
 sd1_200msec['cos_sza'] = muslope(sd1_200msec['sd1_tilt_sza'],sd1_200msec['sd1_tilt_az'],sd1_200msec['instzen'],sd1_200msec['instaz'])
@@ -247,8 +254,8 @@ for index,row in sd2_200msec.iterrows():
         print count
     count +=1   
 
-sd2_200msec['instzen'],sd2_200msec['instaz'] = prh2za(-1*(8+sd1_200msec['sw_shaded_radiometer:raw:wing_pitch (degrees)']),
-                        sd2_200msec['sw_shaded_radiometer:raw:wing_roll (degrees)'],
+sd2_200msec['instzen'],sd2_200msec['instaz'] = prh2za(-1*(sd2_pitch_offset+sd1_200msec['sw_shaded_radiometer:raw:wing_pitch (degrees)']),
+                        sd2_roll_offset+sd2_200msec['sw_shaded_radiometer:raw:wing_roll (degrees)'],
                         sd2_200msec['sw_shaded_radiometer:raw:wing_yaw (degrees)'])
 
 sd2_200msec['cos_sza'] = muslope(sd2_200msec['sd2_tilt_sza'],sd2_200msec['sd2_tilt_az'],sd2_200msec['instzen'],sd2_200msec['instaz'])
@@ -260,20 +267,54 @@ sd2_200msec['tilt_normal'] = (np.cos(np.deg2rad(sd2_200msec['sd2_tilt_sza'])) + 
    
 fig, axes = plt.subplots(nrows=4, ncols=1)
 (sd1_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[0])
+(sd1_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[0])
 (sd1_200msec['tilt_normal'].resample('1s').mean()*sd1_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[0])
 (sd1_200msec['tilt_normal'].resample('1s').mean()*sd1_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[0])
 axes[0].set_title('sd 1005 tilt corrected')
 axes[0].set_xticks([])
 axes[0].set_ylim([-100, 1000])
-axes[0].legend(['uncorrected', 'unshaded corrected','shaded corrected'])
+axes[0].legend(['unshaded uncorrected','shaded uncorrected', 'unshaded corrected','shaded corrected'])
 
 (sd2_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[1])
+(sd2_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[1])
 (sd2_200msec['tilt_normal'].resample('1s').mean()*sd2_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[1])
 (sd2_200msec['tilt_normal'].resample('1s').mean()*sd2_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[1])
 axes[1].set_title('sd 1006 tilt corrected')
 axes[1].set_xticks([])
 axes[1].set_ylim([-100, 1000])
-axes[1].legend(['uncorrected', 'unshaded corrected','shaded corrected'])
+axes[1].legend(['unshaded uncorrected','shaded uncorrected', 'unshaded corrected','shaded corrected'])
+
+(sd1_200msec['sw_shaded_radiometer:raw:diffuse (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[2])
+(sd2_200msec['sw_shaded_radiometer:raw:diffuse (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[2])
+axes[2].set_title('diffuse')
+axes[2].set_xticks([])
+axes[2].legend(['sd1005','sd1006'])
+
+(sd1_200msec['sd1_tilt_cos_sza'].resample('1s').mean()).plot(ax=axes[3])
+(sd2_200msec['sd2_tilt_cos_sza'].resample('1s').mean()).plot(ax=axes[3])
+(sd1_200msec['sd1_tilt_sza'].resample('1s').mean()).plot(ax=axes[3])
+axes[3].set_title('solar angles')
+axes[3].legend(['sd1005 sza','sd1006 sza','local sza'])
+
+
+fig, axes = plt.subplots(nrows=4, ncols=1)
+(sd1_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('10s').mean()).plot(ax=axes[0])
+(sd1_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('10s').mean()).plot(ax=axes[0])
+(sd1_200msec['tilt_normal'].resample('1s').mean()*sd1_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).resample('10s').mean().plot(ax=axes[0])
+(sd1_200msec['tilt_normal'].resample('1s').mean()*sd1_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('1s').mean()).resample('10s').mean().plot(ax=axes[0])
+axes[0].set_title('sd 1005 tilt corrected')
+axes[0].set_xticks([])
+axes[0].set_ylim([-100, 1000])
+axes[0].legend(['unshaded uncorrected','shaded uncorrected', 'unshaded corrected','shaded corrected'])
+
+(sd2_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('10s').mean()).plot(ax=axes[1])
+(sd2_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('10s').mean()).plot(ax=axes[1])
+(sd2_200msec['tilt_normal'].resample('1s').mean()*sd2_200msec['sw_unshaded_radiometer:raw:center_detector (watt_per_m2)'].resample('1s').mean()).resample('10s').mean().plot(ax=axes[1])
+(sd2_200msec['tilt_normal'].resample('1s').mean()*sd2_200msec['sw_shaded_radiometer:raw:total (watt_per_m2)'].resample('1s').mean()).resample('10s').mean().plot(ax=axes[1])
+axes[1].set_title('sd 1006 tilt corrected')
+axes[1].set_xticks([])
+axes[1].set_ylim([-100, 1000])
+axes[1].legend(['unshaded uncorrected','shaded uncorrected', 'unshaded corrected','shaded corrected'])
 
 (sd1_200msec['sw_shaded_radiometer:raw:diffuse (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[2])
 (sd2_200msec['sw_shaded_radiometer:raw:diffuse (watt_per_m2)'].resample('1s').mean()).plot(ax=axes[2])
