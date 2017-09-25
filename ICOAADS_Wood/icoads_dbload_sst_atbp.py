@@ -45,7 +45,7 @@ data = pd.read_csv(args.sourcefile, error_bad_lines=False)
 data = data.where((pd.notnull(data)), None)
 
 for index,row in data.iterrows():
-  ICOADSdb.add_to_DB(table='ICOADS_SST_ATBP',YR=row.YR,MO=row.MO,DY=row.DY,HR=row.HR,LAT=row.LAT,LON=row.LON,
+  ICOADSdb.add_to_DB(table='ICOADS_ShipObs_AK_1945to1955',YR=row.YR,MO=row.MO,DY=row.DY,HR=row.HR,LAT=row.LAT,LON=row.LON,
   						ID=row.ID,AT=row.AT,SLP=row.SLP)
   if index % 1000 == 0:
   	print("Inserted row {index}".format(index=index))
