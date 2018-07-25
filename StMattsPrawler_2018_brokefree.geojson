@@ -6,6 +6,1200 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -173.326831,
+          60.326719
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 13:00:33",
+        "Speed": 0,
+        "SATNUM": 5,
+        "HDOP": 2,
+        "GPS Accuracy": 38,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488336F19408F5CDBF0065D311002626",
+        "marker-color": "#ff0000",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326816,
+          60.326737
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 12:00:34",
+        "Speed": 0,
+        "SATNUM": 3,
+        "HDOP": 0.5,
+        "GPS Accuracy": 16,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488328E28108F5CDD10065D320001026",
+        "marker-size": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326819,
+          60.326695
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 11:00:34",
+        "Speed": 0,
+        "SATNUM": 5,
+        "HDOP": 1.5,
+        "GPS Accuracy": 29,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048831AD29308F5CDA70065D31D001D26"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326793,
+          60.326679
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 10:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 2,
+        "GPS Accuracy": 16,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048830CC1A408F5CD970065D337001026"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.32671,
+          60.326651
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 09:00:34",
+        "Speed": 0,
+        "SATNUM": 5,
+        "HDOP": 1,
+        "GPS Accuracy": 13,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004882FEB29208F5CD7B0065D38A000D26"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326687,
+          60.326661
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 08:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 2,
+        "GPS Accuracy": 10,
+        "Time To First Fix": 37,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004882F0A1A408F5CD850065D3A1000A25"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326671,
+          60.326695
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 07:00:34",
+        "Speed": 0,
+        "SATNUM": 4,
+        "HDOP": 1,
+        "GPS Accuracy": 15,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004882E2928A08F5CDA70065D3B1000F26"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326888,
+          60.326808
+        ]
+      },
+      "properties": {
+        "marker-color": "",
+        "marker-size": "",
+        "marker-symbol": "",
+        "Data Date (UTC)": "2018-07-25 06:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 1.5,
+        "GPS Accuracy": 23,
+        "Time To First Fix": 37,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004882D481A308F5CE180065D2D8001725"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326856,
+          60.326892
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 05:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 1.5,
+        "GPS Accuracy": 10,
+        "Time To First Fix": 36,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004882C671A308F5CE6C0065D2F8000A24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326876,
+          60.326952
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 04:00:33",
+        "Speed": 0,
+        "SATNUM": 3,
+        "HDOP": 3,
+        "GPS Accuracy": 8,
+        "Time To First Fix": 36,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004882B8618608F5CEA80065D2E4000824"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326933,
+          60.327018
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 03:00:33",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 3.5,
+        "GPS Accuracy": 14,
+        "Time To First Fix": 36,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004882AA519F08F5CEEA0065D2AB000E24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.327091,
+          60.326917
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 02:00:34",
+        "Speed": 0,
+        "SATNUM": 3,
+        "HDOP": 1,
+        "GPS Accuracy": 11,
+        "Time To First Fix": 37,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048829C428208F5CE850065D20D000B25"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.327329,
+          60.326271
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 01:00:34",
+        "Speed": 0,
+        "SATNUM": 8,
+        "HDOP": 2,
+        "GPS Accuracy": 16,
+        "Time To First Fix": 36,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048828E32AC08F5CBFF0065D11F001024"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326907,
+          60.325516
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-25 00:00:34",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 1.5,
+        "GPS Accuracy": 27,
+        "Time To First Fix": 36,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048828022A308F5C90C0065D2C5001B24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.326329,
+          60.324979
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 23:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 3,
+        "GPS Accuracy": 13,
+        "Time To First Fix": 35,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048827211A608F5C6F30065D507000D23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.32574,
+          60.324694
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 22:00:34",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 1.5,
+        "GPS Accuracy": 9,
+        "Time To First Fix": 36,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048826402A308F5C5D60065D754000924"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325678,
+          60.324626
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 21:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 2,
+        "GPS Accuracy": 13,
+        "Time To First Fix": 34,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488255F1A408F5C5920065D792000D22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325629,
+          60.32457
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 20:00:34",
+        "Speed": 0,
+        "SATNUM": 3,
+        "HDOP": 1.5,
+        "GPS Accuracy": 13,
+        "Time To First Fix": 35,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488247E28308F5C55A0065D7C3000D23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325566,
+          60.324544
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 19:00:33",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 1,
+        "GPS Accuracy": 10,
+        "Time To First Fix": 34,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488239D19A08F5C5400065D802000A22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.32554,
+          60.324548
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 18:00:33",
+        "Speed": 0,
+        "SATNUM": 4,
+        "HDOP": 1,
+        "GPS Accuracy": 7,
+        "Time To First Fix": 34,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048822BC18A08F5C5440065D81C000722"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325499,
+          60.324556
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 17:00:33",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 2,
+        "GPS Accuracy": 20,
+        "Time To First Fix": 33,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048821DB19C08F5C54C0065D845001421"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325452,
+          60.32457
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 16:00:34",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 0.5,
+        "GPS Accuracy": 21,
+        "Time To First Fix": 34,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048820FA29908F5C55A0065D874001522"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325482,
+          60.324618
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 15:00:34",
+        "Speed": 0,
+        "SATNUM": 10,
+        "HDOP": 3.5,
+        "GPS Accuracy": 8,
+        "Time To First Fix": 44,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048820192BF08F5C58A0065D85600082C"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.32553,
+          60.324627
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 14:00:34",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 3,
+        "GPS Accuracy": 11,
+        "Time To First Fix": 43,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004881F3829E08F5C5930065D826000B2B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325599,
+          60.324634
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 13:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 1.5,
+        "GPS Accuracy": 16,
+        "Time To First Fix": 43,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004881E571A308F5C59A0065D7E100102B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325598,
+          60.324612
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 12:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 3.5,
+        "GPS Accuracy": 17,
+        "Time To First Fix": 43,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004881D761A708F5C5840065D7E200112B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.3256,
+          60.324563
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 11:00:33",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 0.5,
+        "GPS Accuracy": 13,
+        "Time To First Fix": 43,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004881C9519908F5C5530065D7E0000D2B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325557,
+          60.324547
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 10:00:34",
+        "Speed": 0,
+        "SATNUM": 10,
+        "HDOP": 3.5,
+        "GPS Accuracy": 14,
+        "Time To First Fix": 42,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004881BB42BF08F5C5430065D80B000E2A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325507,
+          60.324535
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 09:00:34",
+        "Speed": 0,
+        "SATNUM": 9,
+        "HDOP": 2.5,
+        "GPS Accuracy": 13,
+        "Time To First Fix": 42,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004881AD32B508F5C5370065D83D000D2A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325451,
+          60.324538
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 08:00:33",
+        "Speed": 0,
+        "SATNUM": 3,
+        "HDOP": 3.5,
+        "GPS Accuracy": 45,
+        "Time To First Fix": 41,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048819F218708F5C53A0065D875002D29"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325425,
+          60.324532
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 07:00:33",
+        "Speed": 0,
+        "SATNUM": 3,
+        "HDOP": 1.5,
+        "GPS Accuracy": 12,
+        "Time To First Fix": 42,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488191118308F5C5340065D88F000C2A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325365,
+          60.324555
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 06:00:57",
+        "Speed": 0,
+        "SATNUM": 5,
+        "HDOP": 2,
+        "GPS Accuracy": 22,
+        "Time To First Fix": 65,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488183199408F5C54B0065D8CB001641"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325354,
+          60.324601
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 05:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 3,
+        "GPS Accuracy": 21,
+        "Time To First Fix": 41,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488174F1A608F5C5790065D8D6001529"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325383,
+          60.324637
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 04:00:34",
+        "Speed": 0,
+        "SATNUM": 3,
+        "HDOP": 3,
+        "GPS Accuracy": 19,
+        "Time To First Fix": 41,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488166E28608F5C59D0065D8B9001329"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325394,
+          60.324708
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 03:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 3.5,
+        "GPS Accuracy": 23,
+        "Time To First Fix": 40,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488158D1A708F5C5E40065D8AE001728"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.325457,
+          60.324747
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 02:00:34",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 0.5,
+        "GPS Accuracy": 28,
+        "Time To First Fix": 40,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048814AC2A108F5C60B0065D86F001C28"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.32558,
+          60.324744
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 01:00:33",
+        "Speed": 0,
+        "SATNUM": 5,
+        "HDOP": 0.5,
+        "GPS Accuracy": 34,
+        "Time To First Fix": 40,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048813CB19108F5C6080065D7F4002228"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.324711,
+          60.323713
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-24 00:00:34",
+        "Speed": 0,
+        "SATNUM": 9,
+        "HDOP": 1.5,
+        "GPS Accuracy": 19,
+        "Time To First Fix": 40,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048812EA2B308F5C2010065DB59001328"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.321727,
+          60.321815
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 23:00:33",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 0.5,
+        "GPS Accuracy": 14,
+        "Time To First Fix": 40,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488120919908F5BA970065E701000E28"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.318875,
+          60.320558
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 22:00:33",
+        "Speed": 0,
+        "SATNUM": 5,
+        "HDOP": 3.5,
+        "GPS Accuracy": 12,
+        "Time To First Fix": 39,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488112819708F5B5AE0065F225000C27"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317781,
+          60.320217
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 21:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 3.5,
+        "GPS Accuracy": 8,
+        "Time To First Fix": 39,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048810471A708F5B4590065F66B000827"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317639,
+          60.320127
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 20:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 3,
+        "GPS Accuracy": 14,
+        "Time To First Fix": 39,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004880F661A608F5B3FF0065F6F9000E27"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317472,
+          60.32008
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 18:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 0.5,
+        "GPS Accuracy": 27,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004880DA41A108F5B3D00065F7A0001B26"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317407,
+          60.320104
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 17:00:34",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 2,
+        "GPS Accuracy": 9,
+        "Time To First Fix": 39,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004880CC32A408F5B3E80065F7E1000927"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317378,
+          60.320138
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 16:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 2,
+        "GPS Accuracy": 20,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004880BE21A408F5B40A0065F7FE001426"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317372,
+          60.320132
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 15:00:33",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 2,
+        "GPS Accuracy": 14,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004880B0119C08F5B4040065F804000E26"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317378,
+          60.320179
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 14:00:34",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 0.5,
+        "GPS Accuracy": 15,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD004880A202A108F5B4330065F7FE000F26"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317396,
+          60.320239
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 13:00:33",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 3.5,
+        "GPS Accuracy": 19,
+        "Time To First Fix": 37,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488093F19F08F5B46F0065F7EC001325"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317463,
+          60.320205
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 12:00:34",
+        "Speed": 0,
+        "SATNUM": 9,
+        "HDOP": 1,
+        "GPS Accuracy": 17,
+        "Time To First Fix": 38,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488085E2B208F5B44D0065F7A9001126"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317494,
+          60.320192
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 11:00:33",
+        "Speed": 0,
+        "SATNUM": 5,
+        "HDOP": 3,
+        "GPS Accuracy": 17,
+        "Time To First Fix": 37,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488077D19608F5B4400065F78A001125"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.31751,
+          60.320176
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 10:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 3,
+        "GPS Accuracy": 14,
+        "Time To First Fix": 36,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD00488069C1A608F5B4300065F77A000E24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.317389,
+          60.320179
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 09:00:35",
+        "Speed": 0,
+        "SATNUM": 6,
+        "HDOP": 1.5,
+        "GPS Accuracy": 45,
+        "Time To First Fix": 37,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048805BB39B08F5B4330065F7F3002D25"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.3172,
+          60.320185
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 08:00:33",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 3.5,
+        "GPS Accuracy": 18,
+        "Time To First Fix": 36,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048804DA1A708F5B4390065F8B0001224"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.316905,
+          60.320435
+        ]
+      },
+      "properties": {
+        "Data Date (UTC)": "2018-07-23 07:00:34",
+        "Speed": 0,
+        "SATNUM": 7,
+        "HDOP": 3.5,
+        "GPS Accuracy": 15,
+        "Time To First Fix": 36,
+        "Battery Voltage": "",
+        "Temperature": "",
+        "Event": "",
+        "Report Body": "01FD0048803F92A708F5B5330065F9D7000F24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -173.316745,
           60.320887
         ]
@@ -20,8 +1214,7 @@
         "Battery Voltage": "",
         "Temperature": "",
         "Event": "",
-        "Report Body": "01FD0048803182A408F5B6F70065FA77000F24",
-        "marker-color": "#f07d7d"
+        "Report Body": "01FD0048803182A408F5B6F70065FA77000F24"
       }
     },
     {
@@ -34,9 +1227,6 @@
         ]
       },
       "properties": {
-        "marker-color": "",
-        "marker-size": "medium",
-        "marker-symbol": "",
         "Data Date (UTC)": "2018-07-23 05:00:33",
         "Speed": 0,
         "SATNUM": 8,
@@ -5635,28 +6825,6 @@
         "Temperature": "",
         "Event": "",
         "Report Body": "01FD00486EB99BA708F13DC3006E0720002427"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -172.788901,
-          60.027864
-        ]
-      },
-      "properties": {
-        "Data Date (UTC)": "2018-07-09 00:00:33",
-        "Speed": 1,
-        "SATNUM": 5,
-        "HDOP": 2,
-        "GPS Accuracy": 44,
-        "Time To First Fix": 39,
-        "Battery Voltage": "",
-        "Temperature": "",
-        "Event": "",
-        "Report Body": "01FD00486D68219408F13E58006E085B012C27"
       }
     }
   ]
