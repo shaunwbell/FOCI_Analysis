@@ -219,7 +219,7 @@ if args.DataPath:
 else:
     NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/3hourly/'
 
-infile = [NARR + 'uwnd.10m.1994.nc'] #used just to get grid sections
+infile = [NARR + 'uwnd.10m.2014.nc'] #used just to get grid sections
 
 print infile
 ### Grab grid points for future slicing - assume grid is same in all model output

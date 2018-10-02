@@ -216,7 +216,7 @@ args = parser.parse_args()
 if args.DataPath:
     NARR = args.DataPath
 else:
-    NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/daily/'
+    NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/3hourly/'
 
 infile = [NARR + 'uwnd.10m.2016.nc'] #used just to get grid sections
 
