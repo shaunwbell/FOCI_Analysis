@@ -246,8 +246,8 @@ for yy in years:
     station_1_data = from_netcdf_1dsplice(infile, None, station_1[3], station_1[4])
 
     #filter data
-    station_1u_f = triangle_smoothing(station_1_data['uwnd'])
     station_1u_f = station_1_data['uwnd']
+    station_1u_f = triangle_smoothing(station_1_data['uwnd'])
     
     # retrieve only these location's data
     # vwnd
@@ -256,8 +256,8 @@ for yy in years:
     station_1_data = from_netcdf_1dsplice(infile, None, station_1[3], station_1[4])
 
     #filter data
-    station_1v_f = triangle_smoothing(station_1_data['vwnd'])
     station_1v_f = station_1_data['vwnd']
+    station_1v_f = triangle_smoothing(station_1_data['vwnd'])
 
     # retrieve only these location's data
     # sfc air temp
