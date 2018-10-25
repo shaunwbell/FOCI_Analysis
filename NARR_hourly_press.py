@@ -94,7 +94,7 @@ def csvread(ifile):
      'WV':np.array(vwnd, float)}
      
 def write2epic( file_name, stationid, time, lat_lon, data ):
-        ncinstance = ncutil.EPIC_NC(savefile=file_name)
+        ncinstance = ncutil.EPIC_NC_Cloud(savefile=file_name)
         ncinstance.file_create()
         ncinstance.sbeglobal_atts()
         ncinstance.PMELglobal_atts(Station_Name=stationid, file_name=( __file__.split('/')[-1]) )
@@ -102,24 +102,9 @@ def write2epic( file_name, stationid, time, lat_lon, data ):
         ncinstance.variable_init()
         ncinstance.add_coord_data(time1=time[0], time2=time[1], latitude=lat_lon[0], longitude=-1 * lat_lon[1], \
             depth_level=10. )
-        ncinstance.add_data('WU_422', data[0])
-        ncinstance.add_data('WV_423', data[1])
-        ncinstance.add_data('AT_21', data[2])
+        ncinstance.add_data('PRESS', data[0])
         ncinstance.close()
 
-def write2epic_cf( file_name, stationid, time, lat_lon, data ):
-        ncinstance = ncutil.EPIC_NC_SST_cf(savefile=file_name)
-        ncinstance.file_create()
-        ncinstance.sbeglobal_atts()
-        ncinstance.PMELglobal_atts(Station_Name=stationid, file_name=( __file__.split('/')[-1]) )
-        ncinstance.dimension_init(len_time=len(time))
-        ncinstance.variable_init()
-        ncinstance.add_coord_data(time=time, latitude=lat_lon[0], longitude=-1 * lat_lon[1], \
-            depth_level=10. )
-        ncinstance.add_data('WU_422', data[0])
-        ncinstance.add_data('WV_423', data[1])
-        ncinstance.add_data('AT_21', data[2])
-        ncinstance.close()
 
 def date2pydate(file_time, file_time2=None, file_flag='EPIC'):
     """ Ingest EPIC date or NCEP Date and provide python serial date"""
@@ -208,7 +193,6 @@ parser.add_argument('latitude', metavar='latitude', type=float, help='latitude (
 parser.add_argument('longitude', metavar='longitude', type=float, help='longitude (+W)')               
 parser.add_argument('years', nargs='+', type=int, help='start and stop year')
 parser.add_argument('--DataPath', metavar='DataPath', type=str, help='full path to alternate file')
-parser.add_argument("-cf",'--cf', action="store_true", help='cf conventions - primarily in time')
 args = parser.parse_args()
 
 
@@ -218,7 +202,7 @@ if args.DataPath:
 else:
     NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/3hourly/'
 
-infile = [NARR + 'uwnd.10m.2016.nc'] #used just to get grid sections
+infile = [NARR + 'pres.sfc.2018.nc'] #used just to get grid sections
 
 print infile
 ### Grab grid points for future slicing - assume grid is same in all model output
@@ -240,55 +224,27 @@ years = range(args.years[0],args.years[1]+1)
 
 for yy in years:
     # retrieve only these location's data
-    # uwnd
-    infile = NARR + 'uwnd.10m.'+ str(yy) + '.nc'
+    infile = NARR + 'pres.sfc.'+ str(yy) + '.nc'
     print "Working on file " + infile
     station_1_data = from_netcdf_1dsplice(infile, None, station_1[3], station_1[4])
-
-    #filter data
-    station_1u_f = triangle_smoothing(station_1_data['uwnd'])
-    station_1u_f = station_1_data['uwnd']
+    station_1u_f = station_1_data['pres']
     
-    # retrieve only these location's data
-    # vwnd
-    infile = NARR + 'vwnd.10m.'+ str(yy) + '.nc'
-    print "Working on file " + infile
-    station_1_data = from_netcdf_1dsplice(infile, None, station_1[3], station_1[4])
 
-    #filter data
-    station_1v_f = triangle_smoothing(station_1_data['vwnd'])
-    station_1v_f = station_1_data['vwnd']
-
-    # retrieve only these location's data
-    # sfc air temp
-    infile = NARR + 'air.2m.'+ str(yy) + '.nc'
-    print "Working on file " + infile
-    station_1_data = from_netcdf_1dsplice(infile, None, station_1[3], station_1[4])
-    station_1at = station_1_data['air'] -273.15 #Kelvin
     
     #convert to EPIC time
     pydate = date2pydate(station_1_data['time'], file_flag='NARR')
     epic_time, epic_time1 = pydate2EPIC(pydate)
 
     # output u,v wind components from model grid points
-    save_to_nc = True
+    save_to_nc = False
     if save_to_nc:
         # write to NetCDF
         outfile = 'data/NARR_' + station_name[0] + '_' + str(yy) + '.nc'
         print "Writing to Epic NetCDF " + outfile
-        if args.cf:    
-            #days since 1800-1-1 00:00:0.0
-            date_str_cf = []
-            write2epic_cf( outfile, station_name[0], date_str_cf, station_1_modelpt, [station_1u_f, station_1v_f, station_1at])
-        else:
-            write2epic( outfile, station_name[0], [epic_time, epic_time1], station_1_modelpt, [station_1u_f, station_1v_f, station_1at])
+        write2epic( outfile, station_name[0], [epic_time, epic_time1], station_1_modelpt, [station_1u_f])
     output_to_screen = True
     if output_to_screen:
-        if args.cf:    
-            #days since 1800-1-1 00:00:0.0
-            date_str_cf = num2date(station_1_data['time'], "hours since 1800-01-01")
-            print "Ucomp, Vcomp, airtemp"
-            for i,v in enumerate(station_1u_f):
-                print "{0}, {1}, {2}, {3}".format(date_str_cf[i], station_1u_f[i], station_1v_f[i], station_1at[i])
+        for i,v in enumerate(pydate):
+            print("{},{}".format(num2date(v+1,'days since 1-1-1'),station_1u_f[i]))
 
 

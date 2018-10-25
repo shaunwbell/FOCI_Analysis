@@ -4,7 +4,11 @@
 data_dir="/Users/bell/Data_Local/sst/NOAA_OI_SST_V2/"
 prog_dir="/Users/bell/Programs/Python/FOCI_Analysis/"
 
+python NARR_rad_Station.py M2 56.864 164.0655 2017 2017
+python NARR_rad_Station.py M8 62.2 174.678 2017 2017
+python NARR_rad_Station.py CK 68.0 170.000 2017 2017
 
+: '
 python NARR_rad_Station.py C1 70.836 163.124 2010 2016
 python NARR_rad_Station.py C2 71.230 164.105 2010 2016
 python NARR_rad_Station.py C3 71.825 165.975 2010 2016
@@ -17,3 +21,4 @@ python NARR_rad_Station.py C9 72.467 156.550 2010 2016
 #python NARR_rad_Station.py C10 -
 #python NARR_rad_Station.py C11 -
 python NARR_rad_Station.py C12 67.910 168.198 2010 2016
+'

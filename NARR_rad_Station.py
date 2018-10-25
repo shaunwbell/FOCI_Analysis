@@ -215,9 +215,10 @@ args = parser.parse_args()
 if args.DataPath:
     NARR = args.DataPath
 else:
-    NARR = '/Users/bell/Downloads/narr/dswrf/'
+    NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/daily/'
 
-infile = [NARR + 'dswrf.1979.nc'] #used just to get grid sections
+ftype = 'lhtfl'
+infile = [NARR + ftype + '.2017.nc'] #used just to get grid sections
 
 print infile
 ### Grab grid points for future slicing - assume grid is same in all model output
@@ -240,12 +241,12 @@ years = range(args.years[0],args.years[1]+1)
 for yy in years:
     # retrieve only these location's data
     # uwnd
-    infile = NARR + 'dswrf.'+ str(yy) + '.nc'
+    infile = NARR + ftype+ '.'+ str(yy) + '.nc'
     print "Working on file " + infile
     station_1_data = from_netcdf_1dsplice(infile, None, station_1[3], station_1[4])
 
     #filter data
-    station_1dswrf = station_1_data['dswrf']
+    station_1dswrf = station_1_data[ftype]
     
     #convert to EPIC time
     pydate = date2pydate(station_1_data['time'], file_flag='NARR')
@@ -255,7 +256,7 @@ for yy in years:
     save_to_nc = True
     if save_to_nc:
         # write to NetCDF
-        outfile = 'data/NARR_' + station_name[0] + '_' + str(yy) + '.nc'
+        outfile = 'data/NARR_' + station_name[0] + '_' + str(yy) + '_'+ ftype+'.nc'
         print "Writing to Epic NetCDF " + outfile
         if args.cf:    
             #days since 1800-1-1 00:00:0.0
