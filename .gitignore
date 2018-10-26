@@ -1,4 +1,7 @@
 
 ArcticHeatExperiment/
 
+*.DS_Store
+
 *.nc
+*.pyc
