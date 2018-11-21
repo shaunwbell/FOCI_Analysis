@@ -216,7 +216,7 @@ args = parser.parse_args()
 if args.DataPath:
     NARR = args.DataPath
 else:
-    NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/3hourly/'
+    NARR = '/Users/bell/in_and_outbox/data_sets/reanalyis_data/NARR/daily/'
 
 infile = [NARR + 'uwnd.10m.2016.nc'] #used just to get grid sections
 
@@ -247,7 +247,7 @@ for yy in years:
 
     #filter data
     station_1u_f = station_1_data['uwnd']
-    station_1u_f = triangle_smoothing(station_1_data['uwnd'])
+    #station_1u_f = triangle_smoothing(station_1_data['uwnd'])
     
     # retrieve only these location's data
     # vwnd
@@ -257,7 +257,7 @@ for yy in years:
 
     #filter data
     station_1v_f = station_1_data['vwnd']
-    station_1v_f = triangle_smoothing(station_1_data['vwnd'])
+    #station_1v_f = triangle_smoothing(station_1_data['vwnd'])
 
     # retrieve only these location's data
     # sfc air temp
