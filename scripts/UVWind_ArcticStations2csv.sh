@@ -10,5 +10,5 @@ do
     names=(${files//\// })
     outfile=${names[${#names[@]} - 1]}
     echo "processing file: $files"
-	python ${prog_dir}nc2csv.py ${files} -timeseries -units_meta -EPIC WU_422 WV_423  >> ${outdir}${outfile}.csv
+	python ${prog_dir}nc2csv.py ${files} -timeseries -units_meta -EPIC WU_422 WV_423 AT_21 >> ${outdir}${outfile}.csv
 done
