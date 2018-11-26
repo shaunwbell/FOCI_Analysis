@@ -70,26 +70,6 @@ def latlon_grid(infile):
     ncutil.ncclose(nchandle)
 
     return (lat_lon)
-
-def csvread(ifile):
-    date, time, uwnd, vwnd, atemp, bpress = [], [], [], [], [], []
-    with open(ifile, 'rb') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        next(csv_reader) #skip header
-        """   DAT   TIM          WU           WV           AT           BP        """
-        for row in csv_reader:
-            try:
-                r0,r1,r2,r3,r4,r5,r6 = row[0].strip().split()
-            except ValueError:
-                r0,r1,r2,r3,r4,r5 = row[0].strip().split()
-            date.append(r0)
-            time.append(r1)
-            uwnd.append(r2)
-            vwnd.append(r3)
-
-
-    return {'DAT': np.array(date, int), 'TIM':np.array(time, float), 'WU':np.array(uwnd, float),\
-     'WV':np.array(vwnd, float)}
      
 def write2epic( file_name, stationid, time, lat_lon, data ):
         ncinstance = ncutil.EPIC_NC(savefile=file_name)
@@ -105,19 +85,6 @@ def write2epic( file_name, stationid, time, lat_lon, data ):
         ncinstance.add_data('AT_21', data[2])
         ncinstance.close()
 
-def write2epic_cf( file_name, stationid, time, lat_lon, data ):
-        ncinstance = ncutil.EPIC_NC_SST_cf(savefile=file_name)
-        ncinstance.file_create()
-        ncinstance.sbeglobal_atts()
-        ncinstance.PMELglobal_atts(Station_Name=stationid, file_name=( __file__.split('/')[-1]) )
-        ncinstance.dimension_init(len_time=len(time))
-        ncinstance.variable_init()
-        ncinstance.add_coord_data(time=time, latitude=lat_lon[0], longitude=-1 * lat_lon[1], \
-            depth_level=10. )
-        ncinstance.add_data('WU_422', data[0])
-        ncinstance.add_data('WV_423', data[1])
-        ncinstance.add_data('AT_21', data[2])
-        ncinstance.close()
 
 def date2pydate(file_time, file_time2=None, file_flag='EPIC'):
     """ Ingest EPIC date or NCEP Date and provide python serial date"""
@@ -180,23 +147,7 @@ def triangle_smoothing(data_in):
     
     return filtered_data
 
-"""------------------------- Topo   Modules -------------------------------------------"""
 
-def etopo5_data():
-    """ read in etopo5 topography/bathymetry. """
-    file = '/Volumes/WDC_internal/Users/bell/in_and_outbox/Ongoing_Analysis/MapGrids/etopo5.nc'
-    etopodata = Dataset(file)
-    
-    topoin = etopodata.variables['bath'][:]
-    lons = etopodata.variables['X'][:]
-    lats = etopodata.variables['Y'][:]
-    etopodata.close()
-    
-    topoin,lons = shiftgrid(0.,topoin,lons,start=False) # -360 -> 0
-    
-    lons, lats = np.meshgrid(lons, lats)
-    
-    return(topoin, lats, lons)
         
 """------------------------- Main   Modules -------------------------------------------"""
 
@@ -206,7 +157,6 @@ parser.add_argument('latitude', metavar='latitude', type=float, help='latitude (
 parser.add_argument('longitude', metavar='longitude', type=float, help='longitude (+W)')               
 parser.add_argument('years', nargs='+', type=int, help='start and stop year')
 parser.add_argument('--DataPath', metavar='DataPath', type=str, help='full path to alternate file')
-parser.add_argument("-cf",'--cf', action="store_true", help='cf conventions - primarily in time')
 args = parser.parse_args()
 
 
@@ -274,19 +224,6 @@ for yy in years:
         # write to NetCDF
         outfile = 'data/NARR_' + station_name[0] + '_' + str(yy) + '.nc'
         print "Writing to Epic NetCDF " + outfile
-        if args.cf:    
-            #days since 1800-1-1 00:00:0.0
-            date_str_cf = []
-            write2epic_cf( outfile, station_name[0], date_str_cf, station_1_modelpt, [station_1u_f, station_1v_f, station_1at])
-        else:
-            write2epic( outfile, station_name[0], [epic_time, epic_time1], station_1_modelpt, [station_1u_f, station_1v_f, station_1at])
-    output_to_screen = True
-    if output_to_screen:
-        if args.cf:    
-            #days since 1800-1-1 00:00:0.0
-            date_str_cf = num2date(station_1_data['time'], "hours since 1800-01-01")
-            print "Ucomp, Vcomp, airtemp"
-            for i,v in enumerate(station_1u_f):
-                print "{0}, {1}, {2}, {3}".format(date_str_cf[i], station_1u_f[i], station_1v_f[i], station_1at[i])
+        write2epic( outfile, station_name[0], [epic_time, epic_time1], station_1_modelpt, [station_1u_f, station_1v_f, station_1at])
 
 
