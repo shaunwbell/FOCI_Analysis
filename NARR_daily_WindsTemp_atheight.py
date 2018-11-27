@@ -79,7 +79,7 @@ def write2epic( file_name, stationid, time, lat_lon, data ):
         ncinstance.dimension_init(len_time=len(time[0]))
         ncinstance.variable_init()
         ncinstance.add_coord_data(time1=time[0], time2=time[1], latitude=lat_lon[0], longitude=-1 * lat_lon[1], \
-            depth_level=10. )
+            depth_level=None )
         ncinstance.add_data('WU_422', data[0])
         ncinstance.add_data('WV_423', data[1])
         ncinstance.add_data('AT_21', data[2])
@@ -164,9 +164,9 @@ args = parser.parse_args()
 if args.DataPath:
     NARR = args.DataPath
 else:
-    NARR = '/Users/bell/in_and_outbox/data_sets/reanalyis_data/NARR/daily/'
+    NARR = '/Users/bell/in_and_outbox/data_sets/reanalyis_data/NARR/daily/pressure/'
 
-infile = [NARR + 'uwnd.10m.2016.nc'] #used just to get grid sections
+infile = [NARR + 'uwnd.201710.nc'] #used just to get grid sections
 
 print infile
 ### Grab grid points for future slicing - assume grid is same in all model output
@@ -177,6 +177,9 @@ sta_lat = [args.latitude]
 sta_long = [args.longitude]
 
 #Find NARR nearest point to moorings - haversine formula
+level_ind = 6 #this is 850mb - 
+
+#Find NARR nearest point to moorings - haversine formula
 station_1 = sphered.nearest_point([sta_lat[0],-1 * sta_long[0]],lat_lon['lat'],lat_lon['lon'], '2d')
 station_1_modelpt = [lat_lon['lat'][station_1[3],station_1[4]],lat_lon['lon'][station_1[3],station_1[4]]]
 
@@ -185,45 +188,49 @@ print "station_1 nearest point to %s, %s which is lat:%s , lon:%s" \
     
 #loop over all requested data   
 years = range(args.years[0],args.years[1]+1)
+months = ['01','02','03','04','05','06','07','08','09','10','11','12']
 
 for yy in years:
-    # retrieve only these location's data
-    # uwnd
-    infile = NARR + 'uwnd.10m.'+ str(yy) + '.nc'
-    print "Working on file " + infile
-    station_1_data = from_netcdf_1dsplice(infile, None, station_1[3], station_1[4])
+    for mm in months:
+        # retrieve only these location's data
+        # uwnd
+        try:
+            infile = NARR + 'uwnd.'+ str(yy) + mm + '.nc'
+            print "Working on file " + infile
+            station_1_data = from_netcdf_1dsplice(infile, level_ind, station_1[3], station_1[4])
+            print("Data from {level}".format(level=station_1_data['level'][level_ind]))
+            #filter data
+            station_1u_f = station_1_data['uwnd']
+            #station_1u_f = triangle_smoothing(station_1_data['uwnd'])
+            
+            # retrieve only these location's data
+            # vwnd
+            infile = NARR + 'vwnd.'+ str(yy) + mm + '.nc'
+            print "Working on file " + infile
+            station_1_data = from_netcdf_1dsplice(infile, level_ind, station_1[3], station_1[4])
 
-    #filter data
-    station_1u_f = station_1_data['uwnd']
-    #station_1u_f = triangle_smoothing(station_1_data['uwnd'])
-    
-    # retrieve only these location's data
-    # vwnd
-    infile = NARR + 'vwnd.10m.'+ str(yy) + '.nc'
-    print "Working on file " + infile
-    station_1_data = from_netcdf_1dsplice(infile, None, station_1[3], station_1[4])
+            #filter data
+            station_1v_f = station_1_data['vwnd']
+            #station_1v_f = triangle_smoothing(station_1_data['vwnd'])
 
-    #filter data
-    station_1v_f = station_1_data['vwnd']
-    #station_1v_f = triangle_smoothing(station_1_data['vwnd'])
+            # retrieve only these location's data
+            # sfc air temp
+            infile = NARR + 'air.'+ str(yy) + mm + '.nc'
+            print "Working on file " + infile
+            station_1_data = from_netcdf_1dsplice(infile, level_ind, station_1[3], station_1[4])
+            station_1at = station_1_data['air'] -273.15 #Kelvin
+            
+            #convert to EPIC time
+            pydate = date2pydate(station_1_data['time'], file_flag='NARR')
+            epic_time, epic_time1 = pydate2EPIC(pydate)
 
-    # retrieve only these location's data
-    # sfc air temp
-    infile = NARR + 'air.2m.'+ str(yy) + '.nc'
-    print "Working on file " + infile
-    station_1_data = from_netcdf_1dsplice(infile, None, station_1[3], station_1[4])
-    station_1at = station_1_data['air'] -273.15 #Kelvin
-    
-    #convert to EPIC time
-    pydate = date2pydate(station_1_data['time'], file_flag='NARR')
-    epic_time, epic_time1 = pydate2EPIC(pydate)
-
-    # output u,v wind components from model grid points
-    save_to_nc = True
-    if save_to_nc:
-        # write to NetCDF
-        outfile = 'data/NARR_' + station_name[0] + '_' + str(yy) + '.nc'
-        print "Writing to Epic NetCDF " + outfile
-        write2epic( outfile, station_name[0], [epic_time, epic_time1], station_1_modelpt, [station_1u_f, station_1v_f, station_1at])
-
+            # output u,v wind components from model grid points
+            save_to_nc = True
+            if save_to_nc:
+                # write to NetCDF
+                outfile = 'data/NARR_' + station_name[0] + '_' + str(yy) + mm + '.nc'
+                print "Writing to Epic NetCDF " + outfile
+                write2epic( outfile, station_name[0], [epic_time, epic_time1], station_1_modelpt, [station_1u_f, station_1v_f, station_1at])
+        except:
+            print("File: {infile} not availabile".format(infile=infile))
 

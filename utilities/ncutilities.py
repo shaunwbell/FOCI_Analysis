@@ -55,7 +55,7 @@ def get_vars(nchandle):
     """returns just the variables"""
     return nchandle.variables.keys()
     
-def get_geocoords(nchandle, lat='lat', lon='lon'):
+def get_geocoords(nchandle,lat='lat', lon='lon'):
     
     data = {}
     
@@ -87,7 +87,7 @@ def ncreadfile_dic_slice(nchandle, params, height_ind=None, lat_ind=None, lon_in
     else:
         for j, v in enumerate(params): 
             try: #check for nc variable
-                    data[v] = nchandle.variables[v][:,:,lat_ind,lon_ind]
+                data[v] = nchandle.variables[v][:,height_ind,lat_ind,lon_ind]
 
             except ValueError: #if parameter is not of expected dimensions
                 data[v] = nchandle.variables[v][:]
