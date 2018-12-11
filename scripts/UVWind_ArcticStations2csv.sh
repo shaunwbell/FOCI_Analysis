@@ -1,9 +1,9 @@
 #!/bin/bash
 # script to generate timeseries data from high resolution OI sst data for chosen sites
 
-data_dir="/Volumes/WDC_internal/Users/bell/in_and_outbox/2018/stabeno/nov/m8_850mb_winds/*.nc"
+data_dir="/Volumes/WDC_internal/Users/bell/Programs/Python/FOCI_Analysis/data/*.nc"
 prog_dir="/Volumes/WDC_internal/Users/bell/Programs/Python/EcoFOCI_Utilities/"
-outdir="/Volumes/WDC_internal/Users/bell/in_and_outbox/2018/stabeno/nov/m8_850mb_winds/"
+outdir="/Volumes/WDC_internal/Users/bell/Programs/Python/FOCI_Analysis/data/"
 
 for files in $data_dir
 do
