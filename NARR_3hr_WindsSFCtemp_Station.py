@@ -186,7 +186,7 @@ def triangle_smoothing(data_in):
 
 def etopo5_data():
     """ read in etopo5 topography/bathymetry. """
-    file = '/Volumes/WDC_internal/Users/bell/in_and_outbox/Ongoing_Analysis/MapGrids/etopo5.nc'
+    file = '/Users/bell/in_and_outbox/Ongoing_Analysis/MapGrids/etopo5.nc'
     etopodata = Dataset(file)
     
     topoin = etopodata.variables['bath'][:]
@@ -217,7 +217,7 @@ args = parser.parse_args()
 if args.DataPath:
     NARR = args.DataPath
 else:
-    NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/3hourly/'
+    NARR = '/Users/bell/Data_Local/Reanalysis_Files/NARR/3hourly/'
 
 infile = [NARR + 'uwnd.10m.2014.nc'] #used just to get grid sections
 
