@@ -19,7 +19,7 @@ from netCDF4 import Dataset
 from netCDF4 import date2num
 
 # User Stack
-import general_utilities.haversine as sphered
+import utilities.haversine as sphered
 from utilities import ncutilities as ncutil
 
 # Visual Stack
@@ -161,7 +161,7 @@ def pythondate2str(pdate):
 
 def etopo5_data():
     """ read in etopo5 topography/bathymetry. """
-    file = '/Users/bell/Data_Local/MapGrids/etopo5.nc'
+    file = '../data/etopo5.nc'
     etopodata = Dataset(file)
     
     topoin = etopodata.variables['bath'][:]
@@ -178,8 +178,8 @@ def etopo5_data():
 """------------------------- Main   Modules -------------------------------------------"""
 
 ### list of files
-NARR = '/Users/bell/Data_Local/sst/NOAA_OI_SST_V2/'
-infile = [NARR + 'sst.day.anom.1981.v2.nc']
+NARR = '/Users/bell/in_and_outbox/data_sets/reanalyis_data/OISSTV2/'
+infile = [NARR + 'sst.day.anom.2019.v2.nc']
 
 
 ### Grab grid points for future slicing - assume grid is same in all model output
@@ -202,7 +202,7 @@ stn1_modelpt[1] = -1.*((180 - stn1_modelpt[1]) + 180)
 print "thus converting lon to degrees W positive {0}".format(stn1_modelpt[1])
 
 #loop over all requested data   
-years = range(1981,2017)
+years = range(2016,2019)
 
 for yy in years:
     # retrieve only these location's data

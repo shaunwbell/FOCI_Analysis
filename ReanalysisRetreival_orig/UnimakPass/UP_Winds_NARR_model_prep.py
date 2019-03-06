@@ -203,8 +203,8 @@ def etopo5_data(file='etopo5.nc'):
 """------------------------- Main   Modules -------------------------------------------"""
 
 ### list of files
-NARR = '/Volumes/WDC_internal/Users/bell/Data_Local/Reanalysis_Files/NARR/3hourly/'
-infile = [NARR + 'uwnd.10m.2003.nc']
+NARR = '/Users/bell/in_and_outbox/data_sets/reanalyis_data/NARR/3hr/'
+infile = [NARR + 'uwnd.10m.2016.nc']
 
 
 ### Grab grid points for future slicing - assume grid is same in all model output
@@ -229,7 +229,7 @@ print "stn2 nearest point to %s, %s which is lat:%s , lon:%s" \
     % (sta_lat[1], sta_long[1], stn2_modelpt[0], stn2_modelpt[1])    
 
 #loop over all requested data   
-years = range(2015,2017)
+years = range(2016,2019)
 
 for yy in years:
     # retrieve only these location's data
@@ -296,7 +296,7 @@ for yy in years:
     
 plot_geoloc = True
 if plot_geoloc:
-    (topoin, elats, elons) = etopo5_data(file='/Volumes/WDC_internal/Users/bell/in_and_outbox/Ongoing_Analysis/MapGrids/etopo5.nc')
+    (topoin, elats, elons) = etopo5_data(file='/Users/bell/in_and_outbox/Ongoing_Analysis/MapGrids/etopo5.nc')
     
     fig = plt.figure()
     ax = plt.subplot(111)

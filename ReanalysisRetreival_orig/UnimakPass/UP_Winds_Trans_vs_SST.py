@@ -137,13 +137,13 @@ def rotate_coord(angle_rot, mag, dir):
 """------------------------- Main   Modules -------------------------------------------"""
 
 ### list of files
-NARR_dir = '/Volumes/WDC_internal/Users/bell/in_and_outbox/2016/stabeno/feb/unimakwinds_narr/shumigan_downstream/'
-HROISST_dir = '/Volumes/WDC_internal/Users/bell/in_and_outbox/2016/stabeno/feb/unimakwinds_narr/shumigan_downstream_sst/'
+NARR_dir = '/Users/bell/in_and_outbox/2016/stabeno/feb/unimakwinds_narr/shumigan_downstream/'
+HROISST_dir = '/Users/bell/in_and_outbox/2016/stabeno/feb/unimakwinds_narr/shumigan_downstream_sst/'
 
 #loop over every year from 1981 to 2015.
 # calculate desired average (based on time stamps)
-data_flag = 'sst'
-for year in range(1981,2017):
+data_flag = 'winds'
+for year in range(2016,2019):
     #print "Working on year {0}".format(year)
     sstfile = HROISST_dir + 'NOAA_OI_SST_V2_stn1_' + str(year) + '.nc'
     uvfile = NARR_dir + 'NARR_stn1_' + str(year) + '.nc'
