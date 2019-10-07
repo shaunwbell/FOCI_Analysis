@@ -11,6 +11,8 @@
  Provide U, V 
 
  Save in EPIC NetCDF standard
+
+ python 2.7 only
 """
 #System Stack
 import datetime
