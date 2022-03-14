@@ -1,2 +1,0 @@
-/Users/bell/Data_Local/FOCI/ecoraid/2013/Moorings/13cb1a/13cb1a_s37_0188m.nc
-/Users/bell/Data_Local/FOCI/ecoraid/2013/Moorings/13cb1b/final_data/13cb1b_s37_0188m.nc
