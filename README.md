@@ -1,3 +1,9 @@
+| :warning: WARNING          |
+|:---------------------------|
+| Depricated ...             |
+
+*This repository is only provided as a historical checkpoint. It was a collection of old scripts and routines that are no longer relevant and may be removed or deleted in the future.*
+
 ################
 
 Legal Disclaimer
